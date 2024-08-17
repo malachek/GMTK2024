@@ -1,18 +1,22 @@
+using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerSwitch : MonoBehaviour
 {
-    [SerializeField] GodController godController;
-    [SerializeField] SmallController smallController;
+    [SerializeField] GameObject godObject;
+    [SerializeField] GameObject smallObject;
 
+    [SerializeField] bool startInGod;
     public bool godIsActive {  get; private set; }
 
     private void Awake()
     {
-        godIsActive = true;
-        SwitchPlayer();
+        godIsActive = startInGod;
+        SetEnables();
+        Debug.Log(godIsActive ? "Starting in GOD MODE" : "Starting in SMALL MODE");
     }
 
     void Update()
@@ -27,7 +31,21 @@ public class PlayerSwitch : MonoBehaviour
     {
         Debug.Log(godIsActive ? "switching from god to small" : "switching from small to god");
         godIsActive = !godIsActive;
-        godController.enabled = godIsActive;
-        smallController.enabled = !godIsActive;
+        SetEnables();
+    }
+
+    private void SetEnables()
+    {
+        godObject.SetActive(false);
+        smallObject.SetActive(false);
+
+        if (godIsActive)
+        {
+            godObject.SetActive(true);
+        }
+        else
+        {
+            smallObject.SetActive(true);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DecorationBase : MonoBehaviour
@@ -23,6 +24,7 @@ public class DecorationBase : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (brain.ActiveVirtualCamera == null) return;
         CinemachineVirtualCamera activeVirtualCamera = brain.ActiveVirtualCamera as CinemachineVirtualCamera;
 
         Vector3 cameraPosition = activeVirtualCamera.transform.position;
