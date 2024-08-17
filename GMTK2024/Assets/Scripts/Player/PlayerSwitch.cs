@@ -2,44 +2,50 @@ using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
-#endif
 
 public class PlayerSwitch : MonoBehaviour
 {
-    [SerializeField] GodController godController;
-    [SerializeField] ThirdPersonController smallController;
+    [SerializeField] GameObject godObject;
+    [SerializeField] GameObject smallObject;
 
-    private StarterAssetsInputs _input;
-
+    [SerializeField] bool startInGod;
     public bool godIsActive {  get; private set; }
-
-
-    public bool switchPlayerInput;
 
     private void Awake()
     {
-        _input = FindObjectOfType<StarterAssetsInputs>();
-        Debug.Log(_input.name);
-        godIsActive = true;
-        SwitchPlayer();
+        godIsActive = startInGod;
+        SetEnables();
+        Debug.Log(godIsActive ? "Starting in GOD MODE" : "Starting in SMALL MODE");
     }
 
     void Update()
     {
-        SwitchPlayer();
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            SwitchPlayer();
+        }
     }
 
     public void SwitchPlayer()
     {
-        if(_input.switchPlayer)
+        Debug.Log(godIsActive ? "switching from god to small" : "switching from small to god");
+        godIsActive = !godIsActive;
+        SetEnables();
+    }
+
+    private void SetEnables()
+    {
+        godObject.SetActive(false);
+        smallObject.SetActive(false);
+
+        if (godIsActive)
         {
-            _input.switchPlayer = false;
-            Debug.Log(godIsActive ? "switching from god to small" : "switching from small to god");
-            godIsActive = !godIsActive;
-            godController.enabled = godIsActive;
-            smallController.enabled = !godIsActive;
+            godObject.SetActive(true);
+        }
+        else
+        {
+            smallObject.SetActive(true);
         }
     }
 }

@@ -45,14 +45,14 @@ namespace StarterAssets
 			SprintInput(value.isPressed);
 		}
 
-        public void OnSwitchPlayer(InputValue value)
-        {
+		public void OnSwitchPlayer(InputValue value)
+		{
             SwitchPlayerInput(value.isPressed);
-        }
+		}
 #endif
 
 
-        public void MoveInput(Vector2 newMoveDirection)
+		public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
 		} 
@@ -71,12 +71,13 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
-        public void SwitchPlayerInput(bool newSwitchPlayerState)
-        {
-            switchPlayer = newSwitchPlayerState;
-        }
 
-        private void OnApplicationFocus(bool hasFocus)
+		public void SwitchPlayerInput(bool newSwitchPlayerState)
+		{
+			switchPlayer = newSwitchPlayerState;
+		}
+
+		private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
 		}

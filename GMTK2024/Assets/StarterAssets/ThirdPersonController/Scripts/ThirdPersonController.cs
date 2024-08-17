@@ -104,7 +104,8 @@ namespace StarterAssets
         private Animator _animator;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
-        private GameObject _mainCamera;
+        [SerializeField] GameObject _mainCamera;
+        private PlayerSwitch _playerSwitch;
 
         private const float _threshold = 0.01f;
 
@@ -141,6 +142,7 @@ namespace StarterAssets
             _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM 
             _playerInput = GetComponent<PlayerInput>();
+            _playerSwitch = FindObjectOfType<PlayerSwitch>();
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
@@ -157,6 +159,7 @@ namespace StarterAssets
             _hasAnimator = TryGetComponent(out _animator);
 
             JumpAndGravity();
+            SwitchPlayer();
             GroundedCheck();
             Move();
         }
@@ -345,6 +348,15 @@ namespace StarterAssets
             if (_verticalVelocity < _terminalVelocity)
             {
                 _verticalVelocity += Gravity * Time.deltaTime;
+            }
+        }
+
+        private void SwitchPlayer()
+        {
+            if (_input.switchPlayer)
+            {
+                _input.switchPlayer = false;
+                _playerSwitch.SwitchPlayer();
             }
         }
 
