@@ -4,18 +4,30 @@ using UnityEngine;
 
 public class PlayerSwitch : MonoBehaviour
 {
-    public GodController godController;
-    public SmallController smallController;
+    [SerializeField] GodController godController;
+    [SerializeField] SmallController smallController;
 
-    public bool godIsActive = true;
+    public bool godIsActive {  get; private set; }
 
-   
+    private void Awake()
+    {
+        godIsActive = true;
+        SwitchPlayer();
+    }
 
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.T))
         {
-            godIsActive = !godIsActive;
+            SwitchPlayer();
         }
+    }
+
+    public void SwitchPlayer()
+    {
+        Debug.Log(godIsActive ? "switching from god to small" : "switching from small to god");
+        godIsActive = !godIsActive;
+        godController.enabled = godIsActive;
+        smallController.enabled = !godIsActive;
     }
 }
