@@ -12,6 +12,9 @@ public class PlayerSwitch : MonoBehaviour
     [SerializeField] bool startInGod;
     public bool godIsActive {  get; private set; }
 
+    public delegate void SwitchPlayerAction();
+    public static event SwitchPlayerAction OnSwitchPlayer;
+
     private void Awake()
     {
         godIsActive = startInGod;
@@ -29,6 +32,10 @@ public class PlayerSwitch : MonoBehaviour
 
     public void SwitchPlayer()
     {
+        if (OnSwitchPlayer != null)
+        {
+            OnSwitchPlayer();
+        }
         Debug.Log(godIsActive ? "switching from god to small" : "switching from small to god");
         godIsActive = !godIsActive;
         SetEnables();
