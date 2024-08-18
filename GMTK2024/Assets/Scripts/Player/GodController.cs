@@ -8,9 +8,17 @@ using UnityEngine.Windows;
 
 public class GodController : MonoBehaviour
 {
+    [Header("Jar")]
+    [SerializeField] Transform JarTransform;
+
+
     [Header("Cinemachine")]
     [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
     public GameObject CinemachineCameraTarget;
+
+    [Tooltip("Default FOV")]
+    [SerializeField] float OriginalGodCameraFOV;
+
 
     [Tooltip("How far in degrees can you move the camera up")]
     public float TopClamp = 70.0f;
@@ -55,13 +63,18 @@ public class GodController : MonoBehaviour
         }
     }
 
-
+    private void Awake()
+    {
+        PlayerSwitch.OnSwitchToGod += HandleSwitchToGod;
+    }
     // Start is called before the first frame update
     void Start()
     {
         _input = GetComponent<StarterAssetsInputs>();
         _playerInput = GetComponent<PlayerInput>();
         _playerSwitch = FindObjectOfType<PlayerSwitch>();
+        myCamera.m_Lens.FieldOfView = OriginalGodCameraFOV;
+
     }
 
     // Update is called once per frame
@@ -81,15 +94,35 @@ public class GodController : MonoBehaviour
         if (_input.move != Vector2.zero)
         {
             Debug.Log($"X: {_input.move.x} | Y: {_input.move.y}");
-            transform.Rotate(0f, _input.move.x * -2f * myCamera.m_Lens.FieldOfView * Time.deltaTime, 0f);
+            JarTransform.Rotate(0f, _input.move.x * -2f * myCamera.m_Lens.FieldOfView * Time.deltaTime, 0f);
             myCamera.m_Lens.FieldOfView -= _input.move.y * .25f;
+
+
+            /*transform.Rotate(0f, _input.move.x * -2f * myCamera.m_Lens.FieldOfView * Time.deltaTime, 0f);
+            myCamera.m_Lens.FieldOfView -= _input.move.y * .25f;*/
         }
     }
+
+    void HandleSwitchToGod()
+    {
+        ResetCameraPosition();
+    }
+
+    void ResetCameraPosition()
+    {
+        Debug.Log("Resetting Camera Position");
+        myCamera.m_Lens.FieldOfView = OriginalGodCameraFOV;
+    }
+
 
     private void SwitchPlayer()
     {
         if (_input.switchPlayer)
         {
+            _input.sprint = false;
+            _input.jump = false;
+            _input.move = Vector2.zero;
+            _input.look = Vector2.zero;
             _input.switchPlayer = false;
             _playerSwitch.SwitchPlayer();
         }

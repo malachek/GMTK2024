@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlantBase : DecorationBase
+public class PlantSprite : DecorationSprite
 {
     List<Sprite> SpriteList;
     private SO_Plants plantData;
@@ -16,6 +16,6 @@ public class PlantBase : DecorationBase
 
     protected override void Update()
     {
-        
+        base.Update();
     }
 }

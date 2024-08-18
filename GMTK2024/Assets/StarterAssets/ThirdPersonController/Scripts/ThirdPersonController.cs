@@ -355,6 +355,10 @@ namespace StarterAssets
         {
             if (_input.switchPlayer)
             {
+                _input.sprint = false;
+                _input.jump = false;
+                _input.move = Vector2.zero;
+                _input.look = Vector2.zero;
                 _input.switchPlayer = false;
                 _playerSwitch.SwitchPlayer();
             }
