@@ -63,6 +63,9 @@ public class GodController : MonoBehaviour
         }
     }
 
+    public delegate void RotateJar();
+    public static event RotateJar OnRotateJar;
+
     private void Awake()
     {
         PlayerSwitch.OnSwitchToGod += HandleSwitchToGod;
@@ -91,15 +94,15 @@ public class GodController : MonoBehaviour
 
     private void RotateAndZoom()
     {
-        if (_input.move != Vector2.zero)
+        if (_input.move.x != 0f)
         {
-            Debug.Log($"X: {_input.move.x} | Y: {_input.move.y}");
+            OnRotateJar?.Invoke();
             JarTransform.Rotate(0f, _input.move.x * -2f * myCamera.m_Lens.FieldOfView * Time.deltaTime, 0f);
+        }
+
+        if(_input.move.y != 0f)
+        {
             myCamera.m_Lens.FieldOfView -= _input.move.y * .25f;
-
-
-            /*transform.Rotate(0f, _input.move.x * -2f * myCamera.m_Lens.FieldOfView * Time.deltaTime, 0f);
-            myCamera.m_Lens.FieldOfView -= _input.move.y * .25f;*/
         }
     }
 

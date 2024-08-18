@@ -5,15 +5,9 @@ using UnityEngine;
 
 public class DecorationSprite : MonoBehaviour
 {
-    protected SpriteRenderer spriteRenderer;
-
-    [SerializeField] 
-    SO_Decoration decorData;
-
-    protected virtual void Awake()
+    public void SetSprite(Sprite sprite)
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = decorData.Sprite;
+        GetComponent<SpriteRenderer>().sprite = sprite;
     }
 
 
@@ -22,5 +16,8 @@ public class DecorationSprite : MonoBehaviour
         transform.parent.transform.LookAt(PlayerSwitch.GetLookLocation());
     }
 
-
+    public void ScaleTo(float percentSize)
+    {
+        transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, percentSize);
+    }
 }
