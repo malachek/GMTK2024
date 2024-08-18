@@ -1329,7 +1329,7 @@ Transform:
   m_GameObject: {fileID: 1288458251}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.11, y: -0.01, z: -0}
+  m_LocalPosition: {x: -0.183, y: -0.015, z: 0}
   m_LocalScale: {x: 0.025, y: 0.024999995, z: 0.024999995}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1348,7 +1348,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf6c538bb4dd7a4b8efd581e30aaf47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plantSprite: {fileID: 1973399081}
   plantsData: {fileID: 11400000, guid: eb4aa9ef367b07444b6586897684bc5d, type: 2}
+  my_DesiredSunlight: 0
 --- !u!1 &1385302017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,7 +1812,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 23.603092, y: 16.4}
+  m_Size: {x: 10.8, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
