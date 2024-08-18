@@ -411,7 +411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e80ebd0fc5f41c4295ed1d5fa6d44b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs: []
+  plants:
+  - {fileID: 4929000464292290899, guid: 08f5309d82cc780438aadf0c7e177eb1, type: 3}
+  - {fileID: 8269263022944463839, guid: a1d26333480814846aa163497e8c5712, type: 3}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,8 +562,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bba08668c8183b47add5902116b2be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingOne: {fileID: 4929000464292290899, guid: 08f5309d82cc780438aadf0c7e177eb1,
-    type: 3}
   mainCamera: {fileID: 330585545}
 --- !u!114 &573453897
 MonoBehaviour:
@@ -1419,7 +1419,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1653028478}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 356683575}
+        m_TargetAssemblyTypeName: PrefabSelector, Assembly-CSharp
+        m_MethodName: SelectPrefab
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1653028478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1769,7 +1781,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2141917085}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 356683575}
+        m_TargetAssemblyTypeName: PrefabSelector, Assembly-CSharp
+        m_MethodName: SelectPrefab
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2141917085
 MonoBehaviour:
   m_ObjectHideFlags: 0

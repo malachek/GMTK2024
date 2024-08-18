@@ -1,26 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Planting : MonoBehaviour
 {
-    [SerializeField] GameObject buildingOne;
     [SerializeField] Camera mainCamera;
+    private PrefabSelector plantSelector;
+    void Start()
+    {
+        plantSelector = FindObjectOfType<PrefabSelector>();
+    }
 
     void Update()
     {
-        // Check if the left mouse button is pressed
         if (Input.GetMouseButtonDown(0))
         {
-            // Create a ray from the camera to the mouse position
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
+            //create ray
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            // Perform the raycast
             if (Physics.Raycast(ray, out hit))
             {
-                // Instantiate the prefab at the hit point with no rotation
-                Instantiate(buildingOne, hit.point, Quaternion.identity);
+                GameObject selectedPrefab = plantSelector.GetSelectedPrefab();
+
+                if (selectedPrefab != null)
+                {
+                    Instantiate(selectedPrefab, hit.point, Quaternion.identity);
+                }
+                else
+                {
+                    return;
+                }
             }
         }
     }
