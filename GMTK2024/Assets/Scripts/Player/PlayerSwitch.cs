@@ -97,12 +97,10 @@ public class PlayerSwitch : MonoBehaviour
     {
         if (godIsActive)
         {
-            Debug.Log($"God Location: {S_GodPlantLookLocation}");
             return S_GodPlantLookLocation.position;
         }
         else
         {
-            Debug.Log($"Small Location: {smallObjectTransform}");
             return new Vector3(smallObjectTransform.position.x, 0f, smallObjectTransform.position.z); 
         }
     }

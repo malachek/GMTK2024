@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d89fff94d23e064686cc3b213a51b54, type: 3}
-  m_Name: SO_Plants
+  m_Name: Shrub
   m_EditorClassIdentifier: 
-  description: 
-  sprite: {fileID: 0}
-  plantGenome: 
+  description: basic shrub
+  sprite: {fileID: 21300000, guid: aac683db65cd6ab4b9ea78ddf50b2fce, type: 3}
+  plantGenome: idfk nerd
+  sprites: []
+  desiredSunlight: 1

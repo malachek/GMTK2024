@@ -5,15 +5,10 @@ using UnityEngine;
 
 public class DecorationSprite : MonoBehaviour
 {
-    protected SpriteRenderer spriteRenderer;
 
-    [SerializeField] 
-    SO_Decoration decorData;
-
-    protected virtual void Awake()
+    public void SetSprite(Sprite sprite)
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = decorData.Sprite;
+        GetComponent<SpriteRenderer>().sprite = sprite;
     }
 
 

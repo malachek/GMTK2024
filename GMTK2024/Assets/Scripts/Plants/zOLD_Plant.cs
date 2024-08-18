@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlantGrowth : MonoBehaviour
+public class zOLD_Plant : MonoBehaviour
 {
     //86400f
     // seconds to reach hours
