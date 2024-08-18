@@ -3,14 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerSwitch : MonoBehaviour
 {
+    [Header("GOD")]
     [SerializeField] GameObject godObject;
+    
+    public Transform CurrentGodCameraTransform;
+    private Transform OriginalGodCameraTransform;
+
+
+    [SerializeField] Transform GodPlantLookLocation;
+    private static Transform S_GodPlantLookLocation;
+
+
+    [Header("SMALL")]
     [SerializeField] GameObject smallObject;
+    private static Transform smallObjectTransform;
+
+
+    [Header("SWITCH BEHAVIOR")]
 
     [SerializeField] bool startInGod;
-    public bool godIsActive {  get; private set; }
+    public static bool godIsActive {  get; private set; }
 
     //public delegate void SwitchPlayerAction(string PlayerMode);
     //public static event SwitchPlayerAction OnSwitchPlayer;
@@ -22,26 +38,29 @@ public class PlayerSwitch : MonoBehaviour
     public static event SwitchToSmall OnSwitchToSmall;
 
 
-    [Header("Cameras")]
-
-    public Transform CurrentGodCameraTransform;
-    private Transform OriginalGodCameraTransform;
 
     private void Awake()
     {
-        godIsActive = startInGod;
+        InitializeVariables();
         SetEnables();
         Debug.Log(godIsActive ? "Starting in GOD MODE" : "Starting in SMALL MODE");
-        OriginalGodCameraTransform = CurrentGodCameraTransform;
     }
 
-    void Update()
+    private void InitializeVariables()
+    {
+        S_GodPlantLookLocation = GodPlantLookLocation;
+        godIsActive = startInGod;
+        OriginalGodCameraTransform = CurrentGodCameraTransform;
+        smallObjectTransform = smallObject.transform;
+    }
+
+    /*void Update()
     {
         if(Input.GetKeyDown(KeyCode.T))
         {
             SwitchPlayer();
         }
-    }
+    }*/
 
     /*public static void TriggerSwitchPlayer(string PlayerMode)
     {
@@ -72,6 +91,20 @@ public class PlayerSwitch : MonoBehaviour
         }*/
 
         SetEnables();
+    }
+
+    public static Vector3 GetLookLocation()
+    {
+        if (godIsActive)
+        {
+            Debug.Log($"God Location: {S_GodPlantLookLocation}");
+            return S_GodPlantLookLocation.position;
+        }
+        else
+        {
+            Debug.Log($"Small Location: {smallObjectTransform}");
+            return new Vector3(smallObjectTransform.position.x, 0f, smallObjectTransform.position.z); 
+        }
     }
     public static void TriggerSwitchToGod()
     {
