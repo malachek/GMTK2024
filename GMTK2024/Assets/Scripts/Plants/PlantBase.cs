@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlantBase : MonoBehaviour
 {
-    [SerializeField] DecorationSprite plantSprite;
+    public DecorationSprite plantSprite;
 
     public float my_Points { get; private set; }
 
     [Header("Scriptable Object")]
     [SerializeField] SO_Plants plantsData;
 
-    public int my_DesiredSunlight;
-    public int my_CurrentSunPoints { get; private set; }
+    protected int my_DesiredSunlight;
+    protected int my_CurrentSunPoints { get; private set; }
 
     void Awake()
     {
@@ -38,8 +38,8 @@ public class PlantBase : MonoBehaviour
 
     void CalculateSunlight()
     {
-        int newPoints = PlantConditionCalc.CalcSunPoints(this.transform, my_DesiredSunlight);
-        Debug.Log($"I want {my_DesiredSunlight} light level. this equates to {newPoints}");
+        int newPoints = PlantConditionCalc.CalcSunPoints(this.transform.position, my_DesiredSunlight);
+        //Debug.Log($"I want {my_DesiredSunlight} light level. this equates to {newPoints}");
         my_Points += (newPoints - my_CurrentSunPoints);
         my_CurrentSunPoints = newPoints;
     }

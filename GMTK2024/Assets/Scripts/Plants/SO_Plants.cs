@@ -18,6 +18,10 @@ public class SO_Plants : SO_Decoration
     int desiredSunlight;
     public int DesiredSunlight { get => desiredSunlight; set => desiredSunlight = value; }
 
+    [SerializeField]
+    List<PlantBase> preferredNeighbors;
+    public List<PlantBase > PreferredNeighbors { get => preferredNeighbors; private set => preferredNeighbors = value; }
+
     //copy this format for all base data for PLANTS
     //BASE DATA: stuff that exists from the start
     //each plant TYPE will have its own SO_Plants
