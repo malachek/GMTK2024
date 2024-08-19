@@ -17,7 +17,6 @@ public class SeedState : PlantState
 
         if(CanSprout())
         {
-            Debug.Log($"I can SPROUT!!!! {daysPassed} days and {plantBase.my_Points} points");
             nextState = new SproutState(plantBase);
             stage = EVENT.EXIT;
             return;

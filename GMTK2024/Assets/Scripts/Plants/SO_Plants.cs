@@ -19,12 +19,25 @@ public class SO_Plants : SO_Decoration
     public int DesiredSunlight { get => desiredSunlight; set => desiredSunlight = value; }
 
     [SerializeField]
-    List<PlantBase> preferredNeighbors;
-    public List<PlantBase > PreferredNeighbors { get => preferredNeighbors; private set => preferredNeighbors = value; }
+    int desiredWaterLevel;
+    public int DesiredWaterLevel { get => desiredWaterLevel; set => desiredWaterLevel = value; }
+
+    [SerializeField]
+    int desiredSoilQuality;
+    public int DesiredSoilQuality { get => desiredSoilQuality; set => desiredSoilQuality = value; }
+
+    [SerializeField]
+    List<string> goodNeighborLabels;
+    public List<string> GoodNeighborLabels { get => goodNeighborLabels; private set => goodNeighborLabels = value; }
+
+    [SerializeField]
+    List<string> badNeighborLabels;
+    public List<string> BadNeighborLabels { get => badNeighborLabels; private set => badNeighborLabels = value; }
+
 
     //copy this format for all base data for PLANTS
     //BASE DATA: stuff that exists from the start
     //each plant TYPE will have its own SO_Plants
     //   e.g. the Fern's DesiredSunlight is .5f, the Moss's is .1f
-    
+
 }
