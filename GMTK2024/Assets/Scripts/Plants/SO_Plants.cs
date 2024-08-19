@@ -23,8 +23,8 @@ public class SO_Plants : SO_Decoration
     public int DesiredWaterLevel { get => desiredWaterLevel; set => desiredWaterLevel = value; }
 
     [SerializeField]
-    int desiredSoilQuality;
-    public int DesiredSoilQuality { get => desiredSoilQuality; set => desiredSoilQuality = value; }
+    int desiredSoilBracket;
+    public int DesiredSoilBracket { get => desiredSoilBracket; set => desiredSoilBracket = value; }
 
     [SerializeField]
     List<string> goodNeighborLabels;

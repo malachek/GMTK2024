@@ -13,7 +13,7 @@ public class PlantBase : MonoBehaviour
 
     protected int my_DesiredSunlight;
     protected int my_DesiredWaterLevel;
-    protected int my_DesiredSoil;
+    protected int my_DesiredSoilBracket;
     protected List<string> my_GoodNeighborLabels;
     protected List<string> my_BagNeighborLabels;
 
@@ -23,6 +23,8 @@ public class PlantBase : MonoBehaviour
     public int CrowdingPoints { get; private set; }
 
     protected List<PlantBase> neightboringPlants;
+
+    protected int myWaterLevel;
 
 
     void Awake()
@@ -34,14 +36,26 @@ public class PlantBase : MonoBehaviour
 
         //when jar is rotated, recalculate sunlight
         GodController.OnRotateJar += CalculateSunlightPoints;
+        Soil.OnSoilQualityChange += CalculateSoilPoints;
         // {}.OnWaterPlants += CalculateWaterPoints;
         // {}.OnSoilDegredation += CaclculateSoilPoints;
         // {}.OnNewPlantPlaced += CalculateCrowdingPoints;
+
+
+        //uncomment for testing purposes
+        //TimeManager.OnNewDay += PointGenie;
+    }
+
+    private void PointGenie(int day)
+    {
+        Debug.Log("I AM A SCUM - DELETE THIS");
+        my_Points++;
     }
 
     private void Start()
     {
         CalculateSunlightPoints();
+        CalculateSoilPoints();
     }
 
     void ParseData()
@@ -49,7 +63,7 @@ public class PlantBase : MonoBehaviour
         //do this for all data stored in SO_Plants (and SO_Decoration)
         my_DesiredSunlight = plantsData.DesiredSunlight;
         my_DesiredWaterLevel = plantsData.DesiredWaterLevel;
-        my_DesiredSoil = plantsData.DesiredSoilQuality;
+        my_DesiredSoilBracket = plantsData.DesiredSoilBracket;
         my_GoodNeighborLabels = plantsData.GoodNeighborLabels;
         my_BagNeighborLabels = plantsData.BadNeighborLabels;
     }
@@ -72,10 +86,14 @@ public class PlantBase : MonoBehaviour
         return;
     }
 
-    // TO DO
+    // DONE
     void CalculateSoilPoints()
     {
-        int newPoints = PlantConditionCalc.CalcSoilPoints();
+        CalculateSoilPoints(FindObjectOfType<Soil>().healthBracket);
+    }
+    void CalculateSoilPoints(int soiLHealthBracket)
+    {
+        int newPoints = Mathf.Min(3 - (my_DesiredSoilBracket - soiLHealthBracket), 3);
         my_Points += (newPoints - SoilPoints);
         SoilPoints = newPoints;
         return;

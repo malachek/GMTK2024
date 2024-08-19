@@ -47,11 +47,6 @@ public static class PlantConditionCalc
         return -1;
     }
 
-    public static int CalcSoilPoints()
-    {
-        return -1;
-    }
-
     public static int CalcCrowdingPoints()
     {
         return -1;

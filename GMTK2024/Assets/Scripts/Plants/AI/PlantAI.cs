@@ -18,4 +18,9 @@ public class PlantAI : MonoBehaviour
     {
         currentState = currentState.Process();
     }
+
+    public bool IsGrown()
+    {
+        return (currentState.stateName == PlantState.STATE.GROWN);
+    }
 }
