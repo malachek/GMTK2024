@@ -13,6 +13,7 @@ public class PlantBase : MonoBehaviour
 
     protected int my_DesiredSunlight;
     protected int my_CurrentSunPoints { get; private set; }
+    protected int my_CurrentWaterPoints { get; private set; }
 
     void Awake()
     {
@@ -43,9 +44,18 @@ public class PlantBase : MonoBehaviour
         my_Points += (newPoints - my_CurrentSunPoints);
         my_CurrentSunPoints = newPoints;
     }
-
+    public void WaterPlant(int waterAmount)
+    {
+        // Simply add water points to the plant's total points
+        my_Points += waterAmount;
+        Debug.Log($"{gameObject.name} got watered. Points: {my_Points}");
+    }
     void Update()
     {
-        
+        // when Player press I to water the plant, it will add 1 point
+       // if (Input.GetKeyDown(KeyCode.I))
+      //  {
+          //  WaterPlant(1);
+       // }
     }
 }
