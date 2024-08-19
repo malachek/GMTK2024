@@ -44,6 +44,7 @@ public class PlantBase : MonoBehaviour
 
         //uncomment for testing purposes
         TimeManager.OnNewDay += PointGenie;
+        TimeManager.OnNewDay += ResetWater;
     }
 
     private void PointGenie(int day)
@@ -68,6 +69,17 @@ public class PlantBase : MonoBehaviour
         my_BagNeighborLabels = plantsData.BadNeighborLabels;
     }
 
+    private void ResetWater(int day)
+    {
+        myWaterLevel = 0;
+    }
+
+    public void GetWatered(int waterAmount)
+    {
+        myWaterLevel += waterAmount;
+        CalculateWaterPoints();
+    }
+
     // DONE
     void CalculateSunlightPoints() 
     {
@@ -80,9 +92,10 @@ public class PlantBase : MonoBehaviour
     // TO DO
     void CalculateWaterPoints() 
     {
-        int newPoints = PlantConditionCalc.CalcWaterPoints();
+        int newPoints = PlantConditionCalc.CalcWaterPoints(myWaterLevel, my_DesiredWaterLevel);
         my_Points += (newPoints - WaterPoints);
         WaterPoints = newPoints;
+        Debug.Log($"{gameObject.name} got waterred. waterlevel: {myWaterLevel} | desiredwater: {my_DesiredWaterLevel} | waterpoints: {WaterPoints}");   
         return;
     }
 

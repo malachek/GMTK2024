@@ -42,9 +42,25 @@ public static class PlantConditionCalc
         return 2 - desiredLightLevel;
     }
 
-    public static int CalcWaterPoints()
+    public static int CalcWaterPoints(int currentWater, int desiredWater)
     {
-        return -1;
+        switch (desiredWater - currentWater)
+        {
+            //perfect
+            case int i when i >= -1 && i <= 1:
+                return 3;
+
+            //underwatered
+            case >= 3:
+                return 0;
+
+            //overwatered
+            case <= -4:
+                return 1;
+
+            default:
+                return 2;
+        }
     }
 
     public static int CalcCrowdingPoints()
