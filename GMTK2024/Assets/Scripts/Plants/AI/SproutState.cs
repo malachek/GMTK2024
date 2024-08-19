@@ -37,10 +37,36 @@ public class SproutState : PlantState
 
         if (growthQuarter == 4)
         {
-            nextState = new GrownState(plantBase);
-            stage = EVENT.EXIT;
-            return;
+            if (IsRoomToGrow())
+            {
+                nextState = new GrownState(plantBase);
+                stage = EVENT.EXIT;
+                return;
+            }
         }
+    }
+
+    private bool IsRoomToGrow()
+    {
+        Collider[] cols = Physics.OverlapSphere(plantBase.transform.position, 1.5f); //, LayerMask.NameToLayer("Plant")
+        Debug.Log("I am" + plantBase.gameObject.name);
+        Debug.Log("cols: " + cols);
+        foreach (Collider col in cols)
+        {
+            if (col.gameObject == plantBase.gameObject) continue;
+
+            Debug.Log("touched " + col.gameObject.name);
+            PlantAI plantAIComponent = col.gameObject.GetComponent<PlantAI>();
+
+            if (plantAIComponent != null)
+            {
+                if (plantAIComponent.IsGrown())
+                {
+                    return false;
+                }
+            } 
+        }
+        return true;
     }
 
     private bool CanGrow()

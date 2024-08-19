@@ -43,7 +43,7 @@ public class PlantBase : MonoBehaviour
 
 
         //uncomment for testing purposes
-        //TimeManager.OnNewDay += PointGenie;
+        TimeManager.OnNewDay += PointGenie;
     }
 
     private void PointGenie(int day)
