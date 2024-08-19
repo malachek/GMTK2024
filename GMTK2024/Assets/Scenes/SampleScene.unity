@@ -563,6 +563,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 330585545}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  previewMaterial: {fileID: 2100000, guid: 2f94c09f02860d54387ad651c8d69601, type: 2}
 --- !u!114 &573453897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,9 +583,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
-  buttonMask:
-    serializedVersion: 2
-    m_Bits: 32
 --- !u!4 &573453898
 Transform:
   m_ObjectHideFlags: 0
