@@ -15,14 +15,14 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Plant
   - 
   - Character
   - Ground
   - 
   - 
-  - 
-  - 
+  - PlantCollider
+  - NeighborCollider
   - 
   - 
   - 
