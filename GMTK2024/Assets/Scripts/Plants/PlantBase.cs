@@ -9,7 +9,7 @@ public class PlantBase : MonoBehaviour
     public int my_Points { get; private set; }
 
     [Header("Scriptable Object")]
-    [SerializeField] SO_Plants plantsData;
+    [SerializeField] SeedSO plantsData;
 
     protected int my_DesiredSunlight;
     protected int my_DesiredWaterLevel;
