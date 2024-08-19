@@ -7,51 +7,43 @@ public class PlayerInventory : MonoBehaviour{
 
     [SerializeField] private float money;
     [SerializeField] private int maxInvetorySize;
-
-    private InventoryStackSO[] inventory;
+    [SerializeField] private InventoryStackSO[] seedsInventory, fertilizerInventory;
     private int itemsInInventory;
 
-    private void Awake(){
-        inventory = new InventoryStackSO[maxInvetorySize];
-        PlayerInput playerInput = new PlayerInput();
-    }
+    public float Money {get => money; private set => money = value;}
+    public InventoryStackSO[] SeedsInventory {get {return seedsInventory;} private set{}}
+    public InventoryStackSO[] FertilizerInventory {get {return fertilizerInventory;} private set{}}
 
-    public void AddItemToInventory(BaseDataSO baseDataSO){
-        if(itemsInInventory <= maxInvetorySize){
+    public void AddItemToInventory(BaseDataSO baseDataSO, InventoryStackSO[] inventory){
+        //if(itemsInInventory <= maxInvetorySize){
             if(baseDataSO.stackMax >= 1){
-                int index = SearchInInventory(baseDataSO);
-                if(index > -1 && inventory[index].itemsInStack < inventory[index].baseDataSOArray.Length-1){
-                    inventory[index].baseDataSOArray[inventory[index].itemsInStack] = baseDataSO;
-                    inventory[index].itemsInStack++;
-                }
-                else{
-                    InventoryStackSO newStack = new InventoryStackSO{
-                        stackType = baseDataSO.eItemType,
-                        baseDataSOArray = new BaseDataSO[baseDataSO.stackMax],
-                        itemsInStack = 0
-                    };
-                    newStack.baseDataSOArray[newStack.itemsInStack] = baseDataSO;
-                    newStack.itemsInStack++;
-                    inventory[itemsInInventory] = newStack;
-                    itemsInInventory++;
+                int index = SearchInInventory(baseDataSO, inventory);
+                if(index > -1 && (inventory[index] != null)){
+                    if(inventory[index].itemsInStack < inventory[index].baseDataSOArray.Length-1){
+                        inventory[index].baseDataSOArray[inventory[index].itemsInStack] = baseDataSO;
+                        inventory[index].itemsInStack++;
+                        itemsInInventory++;
+                    }
                 }
             }
-        }
+        //}
     }
 
-    private int SearchInInventory(BaseDataSO baseDataSO){
+    private int SearchInInventory(BaseDataSO baseDataSO, InventoryStackSO[] inventory){
         int index = 0;
         foreach (InventoryStackSO inventoryStackSO in inventory){
             index++;
-            if(inventoryStackSO.stackType == baseDataSO.eItemType){
-                return index;
+            if(inventoryStackSO != null){
+                if(inventoryStackSO.stackType == baseDataSO.eItemType){
+                    return index;
+                }
             }
         }
         return -1;
     }
 
-    public BaseDataSO GetItemFromInventory(BaseDataSO baseDataSO){
-        int index = SearchInInventory(baseDataSO);
+    public BaseDataSO GetItemFromInventory(BaseDataSO baseDataSO, InventoryStackSO[] inventory){
+        int index = SearchInInventory(baseDataSO, inventory);
         if(index > -1){
             inventory[index].itemsInStack--;
             BaseDataSO temp = inventory[index].baseDataSOArray[inventory[index].itemsInStack];
@@ -60,5 +52,13 @@ public class PlayerInventory : MonoBehaviour{
             return temp;
         }
         return null;
+    }
+
+    public void RemoveMoney(float amount){
+        money -= amount;
+    }
+
+    public void AddMoney(float amount){
+        money += amount;
     }
 }

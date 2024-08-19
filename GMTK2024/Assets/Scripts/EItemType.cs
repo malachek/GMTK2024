@@ -5,18 +5,16 @@ using UnityEngine;
 public enum EItemType{
 
     RegularSoil,
-    ClaySoil,
-    PeatMossSoil,
-    SandySoil,
-    LoamSoil,
-    Vermiculite,
     FernSeed,
     MossesSeed,
     SucculentsSeed,
-    CarnivorousSeed,
-    TropicalSeed,
+    PolkaDotPlantSeed,
+    AirPlantSeed,
+    TropicalPlantSeed,
     OrchidsSeed,
     PeperomiaSeed,
-    Fertilizer,
-    
+    BasicFertilizer,
+    BalancedFertilizer,
+    PhosphourousFertilizer,
+    PremiumFertilizer
 }

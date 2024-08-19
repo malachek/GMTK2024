@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/BaseDataSO/Fertilizer")]
-public class FertilizerSO : InventoryStackSO{
+public class FertilizerSO :BaseDataSO{
 
     [Header("Fertilizer Fields")]
     public float healthBooster;
-    public float waterLevelBooster;
-    public float soilDeplorationBooster;
 }

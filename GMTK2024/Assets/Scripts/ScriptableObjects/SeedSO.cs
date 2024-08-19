@@ -6,9 +6,10 @@ using UnityEngine;
 public class SeedSO : BaseDataSO{
 
     [Header("Seed Fields")]
-    public int desiredSunlight;
-    public int desiredWaterLevel;
-    public int desiredSoilBracket;
-    public List<string> goodNeighboorLabels;
-    public List<string> badNeighboorLabels;
+    public int DesiredSunlight;
+    public int DesiredWaterLevel;
+    public int DesiredSoilBracket;
+    public float Income;
+    public List<string> GoodNeighborLabels;
+    public List<string> BadNeighborLabels;
 }

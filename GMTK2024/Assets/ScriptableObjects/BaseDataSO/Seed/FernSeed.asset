@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb3f07b7f1a55449bb891993899e0d2, type: 3}
   m_Name: FernSeed
   m_EditorClassIdentifier: 
-  stackType: 0
-  baseDataSOArray: []
-  itemsInStack: 0
-  lightIntensity: 0
-  temperature: 0
-  waterLevel: 0
-  soilType: 0
+  objectsName: Fern Seed
+  objectsDescription: 
+  Sprite: {fileID: 21300000, guid: d7c72ec297cb1e7499d2c09cffc1f0d7, type: 3}
+  stackMax: 63
+  eItemType: 1
+  DesiredSunlight: 2
+  DesiredWaterLevel: 6
+  DesiredSoilBracket: 0
+  Income: 5
+  GoodNeighborLabels: []
+  BadNeighborLabels: []
