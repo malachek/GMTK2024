@@ -102,7 +102,16 @@ public class GodController : MonoBehaviour
 
         if(_input.move.y != 0f)
         {
-            myCamera.m_Lens.FieldOfView -= _input.move.y * .25f;
+            float newFOV = myCamera.m_Lens.FieldOfView - _input.move.y * .25f;
+
+            if (newFOV >= 70f)
+            {
+                myCamera.m_Lens.FieldOfView = 70f;
+            }
+            else
+            {
+                myCamera.m_Lens.FieldOfView = newFOV;
+            }
         }
     }
 

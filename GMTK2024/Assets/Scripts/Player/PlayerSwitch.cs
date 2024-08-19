@@ -1,3 +1,4 @@
+using Cinemachine;
 using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,10 +18,16 @@ public class PlayerSwitch : MonoBehaviour
     [SerializeField] Transform GodPlantLookLocation;
     private static Transform S_GodPlantLookLocation;
 
+    [SerializeField] GameObject JarColliders;
+    [SerializeField] Outline JarOutline;
+
 
     [Header("SMALL")]
     [SerializeField] GameObject smallObject;
     private static Transform smallObjectTransform;
+
+    [SerializeField] CinemachineVirtualCamera smallCamera;
+    private static Transform smallCameraTransform;
 
 
     [Header("SWITCH BEHAVIOR")]
@@ -52,6 +59,7 @@ public class PlayerSwitch : MonoBehaviour
         godIsActive = startInGod;
         OriginalGodCameraTransform = CurrentGodCameraTransform;
         smallObjectTransform = smallObject.transform;
+        smallCameraTransform = smallCamera.transform;
     }
 
     /*void Update()
@@ -101,7 +109,9 @@ public class PlayerSwitch : MonoBehaviour
         }
         else
         {
-            return new Vector3(smallObjectTransform.position.x, 0f, smallObjectTransform.position.z); 
+
+            return new Vector3(smallCameraTransform.position.x, 0f, smallObjectTransform.position.z);
+            //return new Vector3(smallObjectTransform.position.x, 0f, smallObjectTransform.position.z); 
         }
     }
     public static void TriggerSwitchToGod()
@@ -126,5 +136,8 @@ public class PlayerSwitch : MonoBehaviour
         {
             smallObject.SetActive(true);
         }
+
+        JarColliders.SetActive(!godIsActive);
+        JarOutline.enabled = godIsActive;
     }
 }
