@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/BaseDataSO/SeedSO")]
-public class SeedSO : InventoryStackSO{
+public class SeedSO : BaseDataSO{
 
     [Header("Seed Fields")]
-    public float lightIntensity;
-    public float temperature;
-    public float waterLevel;
-    public EItemType soilType;
+    public int desiredSunlight;
+    public int desiredWaterLevel;
+    public int desiredSoilBracket;
+    public List<string> goodNeighboorLabels;
+    public List<string> badNeighboorLabels;
 }

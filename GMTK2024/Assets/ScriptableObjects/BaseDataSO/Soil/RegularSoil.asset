@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90fcf8ff44208f34293020f297db3700, type: 3}
   m_Name: RegularSoil
   m_EditorClassIdentifier: 
-  objectsName: 
-  objectsDescription: 
+  stackType: 0
+  baseDataSOArray: []
+  itemsInStack: 0
   waterLevel: 0
   soilDeploration: 0
   startingNutrients: 0
   health: 100
-  soilGrade: 0
+  soilGrade: 3

@@ -12,7 +12,7 @@ public class ShopManager : MonoBehaviour
 
 
     // Should also have a player parameter or at least inventory
-    public void BuyItem(StoreItemSO itemSO){
+    public void BuyItem(StoreItemSO itemSO, PlayerInventory playerInventory){
 
         foreach (ItemStockSO itemStockSO in itemStockSOList){
             if (itemStockSO.itemSO.itemType == itemSO.itemType){
@@ -21,6 +21,7 @@ public class ShopManager : MonoBehaviour
                         //Transaction was completed Successfuly 
 
                         // Add item to players inventory
+                        playerInventory.AddItemToInventory(itemSO.baseDataSO);
 
                         itemStockSO.itemSold++;
                         itemStockSO.inStock--;

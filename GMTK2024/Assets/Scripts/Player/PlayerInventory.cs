@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInventory : MonoBehaviour{
 
@@ -12,6 +13,7 @@ public class PlayerInventory : MonoBehaviour{
 
     private void Awake(){
         inventory = new InventoryStackSO[maxInvetorySize];
+        PlayerInput playerInput = new PlayerInput();
     }
 
     public void AddItemToInventory(BaseDataSO baseDataSO){

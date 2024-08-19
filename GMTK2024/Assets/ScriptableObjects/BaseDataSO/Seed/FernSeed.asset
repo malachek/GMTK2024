@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb3f07b7f1a55449bb891993899e0d2, type: 3}
   m_Name: FernSeed
   m_EditorClassIdentifier: 
-  objectsName: 
-  objectsDescription: 
+  stackType: 0
+  baseDataSOArray: []
+  itemsInStack: 0
   lightIntensity: 0
   temperature: 0
   waterLevel: 0
