@@ -106,6 +106,7 @@ namespace StarterAssets
         private StarterAssetsInputs _input;
         [SerializeField] GameObject _mainCamera;
         private PlayerSwitch _playerSwitch;
+        [SerializeField] PlayerSprite playerSprite;
 
         private const float _threshold = 0.01f;
 
@@ -167,6 +168,7 @@ namespace StarterAssets
         private void LateUpdate()
         {
             CameraRotation();
+            SpriteUpdates();
         }
 
         private void AssignAnimationIDs()
@@ -361,6 +363,14 @@ namespace StarterAssets
                 _input.look = Vector2.zero;
                 _input.switchPlayer = false;
                 _playerSwitch.SwitchPlayer();
+            }
+        }
+
+        private void SpriteUpdates()
+        {
+            if (_input.move != Vector2.zero)
+            {
+                playerSprite.UpdateSprite(_input.move);
             }
         }
 

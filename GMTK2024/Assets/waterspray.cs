@@ -18,7 +18,7 @@ public class WaterSpray : MonoBehaviour
     {
         // forcursor at start, but keep it inactive
         cursorInstance = Instantiate(cursorPrefab);
-        cursorInstance.transform.localScale = new Vector3(cursorRadius * 2, 1, cursorRadius * 2); // Adjust the scale based on radius
+        //cursorInstance.transform.localScale = new Vector3(1, 1, 1); // Adjust the scale based on radius
         cursorInstance.SetActive(false);
     }
 
@@ -57,7 +57,7 @@ public class WaterSpray : MonoBehaviour
             cursorInstance.transform.position = hit.point;
 
             // Check for watering input
-            if (Mouse.current.leftButton.isPressed)
+            if (Mouse.current.leftButton.wasPressedThisFrame)
             {
                 WaterPlantsInCursorArea();
             }
@@ -67,17 +67,11 @@ public class WaterSpray : MonoBehaviour
     private void WaterPlantsInCursorArea()
     {
         Collider[] hitColliders = Physics.OverlapSphere(cursorInstance.transform.position, cursorRadius);
-        Debug.Log($"col length: {hitColliders.Length}");
+        //Debug.Log($"col length: {hitColliders.Length}");
         foreach (Collider hitCollider in hitColliders)
         {
-            Debug.Log($"Collided with : {hitCollider.gameObject.name}");
-;
-            PlantBase plant = hitCollider.gameObject.GetComponent<PlantBase>();
-            if (plant != null)
-            {
-                plant.WaterPlant(1); // Adjust water amount as needed
-                Debug.Log($"{plant.gameObject.name} was watered. the Points: {plant.my_Points}");
-            }
+            //Debug.Log($"Collided with : {hitCollider.gameObject.name}");
+;           hitCollider.gameObject.GetComponent<PlantBase>()?.GetWatered(1) ;
         }
     }
 }
