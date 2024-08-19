@@ -108,6 +108,10 @@ public class GodController : MonoBehaviour
             {
                 myCamera.m_Lens.FieldOfView = 70f;
             }
+            else if (newFOV <= 20f)
+            {
+                myCamera.m_Lens.FieldOfView = 20f;
+            }
             else
             {
                 myCamera.m_Lens.FieldOfView = newFOV;
