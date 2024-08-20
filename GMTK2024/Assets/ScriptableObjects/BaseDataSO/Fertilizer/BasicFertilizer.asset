@@ -15,6 +15,6 @@ MonoBehaviour:
   objectsName: 
   objectsDescription: 
   Sprite: {fileID: 0}
-  stackMax: 0
-  eItemType: 0
+  stackMax: 63
+  eItemType: 9
   healthBooster: 0.1

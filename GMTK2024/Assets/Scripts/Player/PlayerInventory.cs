@@ -13,7 +13,7 @@ public class PlayerInventory : MonoBehaviour{
     public float Money {get => money; private set => money = value;}
     public InventoryStackSO[] SeedsInventory {get {return seedsInventory;} private set{}}
     public InventoryStackSO[] FertilizerInventory {get {return fertilizerInventory;} private set{}}
-    public InventoryStackSO[] DecorationsInventory {get {return DecorationsInventory;} private set{}}
+    public InventoryStackSO[] DecorationsInventory {get {return decorationsInventory;} private set{}}
 
     public static PlayerInventory Instance {get; private set;}
 
@@ -23,8 +23,9 @@ public class PlayerInventory : MonoBehaviour{
 
     public void AddItemToInventory(BaseDataSO baseDataSO, InventoryStackSO[] inventory){
         //if(itemsInInventory <= maxInvetorySize){
-            if(baseDataSO.stackMax >= 1){
+            //if(baseDataSO.stackMax >= 1){
                 int index = SearchInInventory(baseDataSO, inventory);
+                Debug.Log(index);
                 if(index > -1 && (inventory[index] != null)){
                     if(inventory[index].itemsInStack < inventory[index].baseDataSOArray.Length-1){
                         inventory[index].baseDataSOArray[inventory[index].itemsInStack] = baseDataSO;
@@ -32,19 +33,20 @@ public class PlayerInventory : MonoBehaviour{
                         itemsInInventory++;
                     }
                 }
-            }
+            //}
         //}
     }
 
     private int SearchInInventory(BaseDataSO baseDataSO, InventoryStackSO[] inventory){
         int index = 0;
         foreach (InventoryStackSO inventoryStackSO in inventory){
-            index++;
+            Debug.Log(inventoryStackSO);
             if(inventoryStackSO != null){
                 if(inventoryStackSO.stackType == baseDataSO.eItemType){
                     return index;
                 }
             }
+            index++;
         }
         return -1;
     }

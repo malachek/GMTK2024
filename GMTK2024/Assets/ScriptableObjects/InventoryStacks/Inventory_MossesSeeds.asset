@@ -14,27 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stackType: 2
   baseDataSOArray:
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
-  - {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -78,4 +57,25 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  itemsInStack: 21
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  itemsInStack: 0

@@ -15,6 +15,7 @@ MonoBehaviour:
   baseDataSO: {fileID: 11400000, guid: c7c329d7635636a40a39af4df715b114, type: 2}
   basePrice: 200
   bundleNum: 1
+  storeItemType: 1
   priceMultiplier: 0
   priceMultiplierModifier: 0
   supplyLimiter: 10
