@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class ShopManagerUI : MonoBehaviour{
     [SerializeField] private Button exitButton;
+    [SerializeField] private Button openShopButton;
     [SerializeField] private Button goBackButton;
     [SerializeField] private Button seedsButton;
     [SerializeField] private Button fertilizerButton;
@@ -28,6 +29,7 @@ public class ShopManagerUI : MonoBehaviour{
         seedsButton.onClick.AddListener(OnSeedsSection);
         fertilizerButton.onClick.AddListener(OnFertilizersSection);
         decorationsButton.onClick.AddListener(OnDecorationsSection);
+        openShopButton.onClick.AddListener(Show);
 
         ShopManager.Instance.OnSuccessfulPurchase += ShopManager_OnSuccessfulPurchase;
 
@@ -35,7 +37,12 @@ public class ShopManagerUI : MonoBehaviour{
         fertilizersContainer.SetActive(false);
         decorationsContainer.SetActive(false);
 
-        //shopUI.SetActive(false);
+        shopUI.SetActive(false);
+    }
+
+    private void Show()
+    {
+        shopUI.SetActive(true);
     }
 
     private void ShopManager_OnSuccessfulPurchase(object sender, EventArgs e)
