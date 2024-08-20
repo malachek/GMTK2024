@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9767c4d389d1441b52403f84c01c6a, type: 3}
+  m_Name: SoilDialogues
+  m_EditorClassIdentifier: 
+  dialogueValuesList:
+  - value: 0
+    text: I never seen soil this health and full of nutrients before, can't it be
+      like this all the time
+  - value: 0
+    text: "Honestly the soil is pretty health but I think it could be better\_"
+  - value: 0
+    text: "Hey have you looked at the health of this soil recently, it's getting
+      pretty bad. You should put some fertilizer in here soon.\_"
+  - value: 0
+    text: This soil is honestly horrid, I don't know if anything will be able to
+      grow in these conditions. You need to put some fertilizer in here soon
+  dialogueCategory: 2
