@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -7,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class Planting : MonoBehaviour
 {
-    [SerializeField] private Camera mainCamera;
+    [SerializeField] private CinemachineVirtualCamera mainCamera;
     [SerializeField] private LayerMask layerMask; // Layer mask for the ground or surfaces where the object can be placed
     [SerializeField] private Material previewMaterial; // Material to use for the preview (semi-transparent)
 
@@ -58,7 +59,7 @@ public class Planting : MonoBehaviour
 
     void UpdatePreviewPosition()
     {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCamera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, layerMask))
         {
             previewInstance.transform.position = hit.point;
