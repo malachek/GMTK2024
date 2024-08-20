@@ -6,6 +6,7 @@ public class SeedState : PlantState
 {
     private int daysPassed = 0;
 
+
     public SeedState(PlantBase _plantBase) : base(_plantBase)
     {
         stateName = STATE.SEED;

@@ -8,6 +8,8 @@ TagManager:
   - MaxDistanceLightPoint
   - MinDistanceLightPoint
   - Sun
+  - SmallCameraLocation
+  - GodCameraLocation
   layers:
   - Default
   - TransparentFX

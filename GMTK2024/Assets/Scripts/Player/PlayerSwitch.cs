@@ -101,18 +101,14 @@ public class PlayerSwitch : MonoBehaviour
         SetEnables();
     }
 
-    public static Vector3 GetLookLocation()
+    public static Transform GetGodCameraLocation()
     {
-        if (godIsActive)
-        {
-            return S_GodPlantLookLocation.position;
-        }
-        else
-        {
+        return S_GodPlantLookLocation.transform;
+    }
 
-            return new Vector3(smallCameraTransform.position.x, 0f, smallObjectTransform.position.z);
-            //return new Vector3(smallObjectTransform.position.x, 0f, smallObjectTransform.position.z); 
-        }
+    public static Transform GetSmallCameraLocation()
+    {
+        return smallCameraTransform;
     }
     public static void TriggerSwitchToGod()
     {
