@@ -18,6 +18,6 @@ MonoBehaviour:
       too much right now
   - value: 0
     text: I don't think the plants are getting enough sunlight right now
-  - value: 0
+  - value: 2
     text: The sunlight is hitting us just perfectly, its great
   dialogueCategory: 0

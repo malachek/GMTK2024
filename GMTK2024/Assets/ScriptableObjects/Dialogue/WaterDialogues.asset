@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: WaterDialogues
   m_EditorClassIdentifier: 
   dialogueValuesList:
-  - value: 0
+  - value: 3
     text: "The moisture here is just perfect, don't change it\_"
-  - value: 0
+  - value: 2
     text: The moisture here is pretty good, could just use some minor adjustments
       though
-  - value: 0
+  - value: 1
     text: "Wow, the moisture in here is really intense, maybe hold back on the water
       a bit tomorrow\_"
   - value: 0
