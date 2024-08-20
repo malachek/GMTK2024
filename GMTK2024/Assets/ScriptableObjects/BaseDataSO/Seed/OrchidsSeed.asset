@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsName: Orchids Seed
   objectsDescription: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 65d32d932e5befd408ade65b4ac59617, type: 3}
   stackMax: 0
   eItemType: 7
   DesiredSunlight: 0

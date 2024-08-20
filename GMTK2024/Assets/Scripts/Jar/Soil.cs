@@ -14,7 +14,8 @@ public class Soil : MonoBehaviour
     [SerializeField] MeshRenderer[] HealthStripMeshes;
 
     [SerializeField] Material[] SoilColorMats;
-    [SerializeField] MeshRenderer DirtMeshRenderer;
+    [SerializeField] MeshRenderer TopDirtMeshRenderer;
+    [SerializeField] MeshRenderer BottomDirtMeshRenderer;
 
     public delegate void SoilQualityChange(int healthBracket);
     public static event SoilQualityChange OnSoilQualityChange;
@@ -67,7 +68,9 @@ public class Soil : MonoBehaviour
 
     private void UpdateSoilColor()
     {
-        DirtMeshRenderer.material = SoilColorMats[healthBracket];
+        TopDirtMeshRenderer.material = SoilColorMats[healthBracket];
+        BottomDirtMeshRenderer.material = SoilColorMats[healthBracket];
+
     }
 
     public void HealSoil(float healAmount)

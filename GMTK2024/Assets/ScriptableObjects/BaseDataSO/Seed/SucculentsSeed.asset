@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsName: Succulent Plant Seed
   objectsDescription: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 50f89084f94c84e40b030578e5d70525, type: 3}
   stackMax: 0
   eItemType: 3
   DesiredSunlight: 0

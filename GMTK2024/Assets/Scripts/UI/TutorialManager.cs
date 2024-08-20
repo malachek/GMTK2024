@@ -14,12 +14,13 @@ public class TutorialManager : MonoBehaviour
     bool IsTutorialActive;
 
     bool IsPlantingQueued = false;
+    bool IsNewDayQueued = false;
 
     void Awake()
     {
         ThePaper.SetActive(false);
         TimeManager.OnNewDay += Welcome;
-        Planting.OnPlantSeed += PlantingTutorial;
+        Planting.OnPlantSeed += NewDayTutorial;
         TimeManager.OnNewDay += Growing;
         TimeManager.OnNewDay += Shrinking;
         TimeManager.OnNewDay += Shop;
@@ -53,7 +54,7 @@ public class TutorialManager : MonoBehaviour
     void Welcome(int day)
     {
         TimeManager.OnNewDay -= Welcome;
-        StartTutorial("Welcome to TerraBloom!\r\n\r\nIn this game your aim to to build your Terrarium\r\n\r\nUse the [W] and [S] to zoom in and out and [A] and [D] to rotate the Jar.\r\n\r\n");
+        StartTutorial("Welcome to TerraBloom!\r\n\r\nIn this game your aim to to build your Terrarium\r\n\r\nUse [A] and [D] to rotate the Jar\r\n\r\nand [W] and [S] to zoom in and out.\r\n\r\n");
         IsPlantingQueued = true;
     }
 
@@ -67,7 +68,12 @@ public class TutorialManager : MonoBehaviour
     void PlantingTutorial()
     {
         Planting.OnPlantSeed -= PlantingTutorial;
-        StartTutorial("Planting!\r\n\r\nClick on a seed pouch from the shelf\r\n\r\nPick up the seed that is dropped on the table\r\n\r\nHere's 3 ferns to test with!\r\n\r\n\r\n");
+        StartTutorial("Planting!\r\n\r\nClick on a seed pouch from the shelf\r\n\r\nPick up the seed that is dropped on the table and click the dirt to plant it\r\n\r\nHere's 3 ferns to test with!\r\n\r\n\r\n");
+    }
+
+    void NewDayTutorial()
+    {
+        StartTutorial("Plants take time to grow!\r\n\r\nClick on the sun to go into the next day");
     }
 
     void Growing(int day)
@@ -83,7 +89,7 @@ public class TutorialManager : MonoBehaviour
         if (day < 3) return;
 
         TimeManager.OnNewDay -= Shrinking;
-        StartTutorial("Shrinking!\r\n\r\nPress the F key to skrink down into your Terrarium\r\n\r\nTalking to the insects will let you know the current state of your plant and what can be improved\r\n\r\n\r\n\r\n\r\n\r\n");
+        StartTutorial("Shrinking!\r\n\r\nPress [F] to SHRINK down into your Terrarium, and to GROW back\r\n\r\nTalking to the insects will let you know the current state of your plant and what can be improved\r\n\r\n\r\n\r\n\r\n\r\n");
     }
 
     void Shop(int day)

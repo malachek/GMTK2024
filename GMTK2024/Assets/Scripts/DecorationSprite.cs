@@ -1,4 +1,5 @@
 ﻿using Cinemachine;
+using System.Collections;
 using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class DecorationSprite : MonoBehaviour
 {
     Transform GodCameraTransform;
     Transform SmallCameraTransform;
+
+    Color c;
 
     bool IsGodMode = true;
 
@@ -25,6 +28,19 @@ public class DecorationSprite : MonoBehaviour
     public void SetSprite(Sprite sprite)
     {
         GetComponent<SpriteRenderer>().sprite = sprite;
+        c = GetComponent<SpriteRenderer>().color;
+    }
+
+    public void BeHappy()
+    {
+        StartCoroutine(ColorMeHappy());
+    }
+
+    IEnumerator ColorMeHappy()
+    {
+        GetComponent<SpriteRenderer>().color = Color.green;
+        yield return new WaitForSeconds(.5f);
+        GetComponent<SpriteRenderer>().color = c;
     }
 
     void SwitchToGod()

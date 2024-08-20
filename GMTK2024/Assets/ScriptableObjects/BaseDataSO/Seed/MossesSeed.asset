@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsName: Mosses Plant
   objectsDescription: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: dc1b51f56d220c440873f2ffac8bc4c9, type: 3}
   stackMax: 0
   eItemType: 2
   DesiredSunlight: 0
