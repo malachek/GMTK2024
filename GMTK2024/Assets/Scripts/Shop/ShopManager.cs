@@ -12,10 +12,11 @@ public class ShopManager : MonoBehaviour
     public event EventHandler OnFailedPurchase;
     public event EventHandler OnNotOnStock;
 
-    private void Start(){
-        //Subscribe to an event that will call BuyItem when the player wants to buy an item.
-    }
+    public static ShopManager Instance {get; private set;}
 
+    private void Awake(){
+        Instance = this;
+    }
 
     // Should also have a player parameter or at least inventory
     public void BuyItem(StoreItemSO itemSO, PlayerInventory playerInventory){

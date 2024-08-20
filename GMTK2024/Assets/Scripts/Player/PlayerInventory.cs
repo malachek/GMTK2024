@@ -14,6 +14,12 @@ public class PlayerInventory : MonoBehaviour{
     public InventoryStackSO[] SeedsInventory {get {return seedsInventory;} private set{}}
     public InventoryStackSO[] FertilizerInventory {get {return fertilizerInventory;} private set{}}
 
+    public static PlayerInventory Instance {get; private set;}
+
+    private void Awake(){
+        Instance = this;
+    }
+
     public void AddItemToInventory(BaseDataSO baseDataSO, InventoryStackSO[] inventory){
         //if(itemsInInventory <= maxInvetorySize){
             if(baseDataSO.stackMax >= 1){
