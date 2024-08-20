@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsName: Fern Seed
   objectsDescription: 
-  Sprite: {fileID: 21300000, guid: d7c72ec297cb1e7499d2c09cffc1f0d7, type: 3}
+  Sprite: {fileID: 21300000, guid: aac683db65cd6ab4b9ea78ddf50b2fce, type: 3}
   stackMax: 63
   eItemType: 1
   DesiredSunlight: 2
