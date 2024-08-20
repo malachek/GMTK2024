@@ -11,6 +11,8 @@ public class Soil : MonoBehaviour
 
     public int healthBracket = 0;
 
+    [SerializeField] MeshRenderer[] HealthStripMeshes;
+
     public delegate void SoilQualityChange(int healthBracket);
     public static event SoilQualityChange OnSoilQualityChange;
 
@@ -47,6 +49,15 @@ public class Soil : MonoBehaviour
         {
             OnSoilQualityChange?.Invoke(newHealthBracket);
             healthBracket = newHealthBracket;
+            UpdateIndicatorStrip();
+        }
+    }
+
+    private void UpdateIndicatorStrip()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            HealthStripMeshes[i].enabled = (healthBracket <= i);
         }
     }
 
