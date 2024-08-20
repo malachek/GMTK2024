@@ -26,6 +26,9 @@ public class InteractGodMode : MonoBehaviour{
                 }
                 else{
                     hit.collider.gameObject.GetComponent<InventorySlot>()?.OnInteract(this);
+                    hit.collider.gameObject.GetComponent<Ducky>()?.OnInteract(this);
+                    hit.collider.gameObject.GetComponent<SunScript>()?.OnInteract(this);
+
                 }
             }
         }
