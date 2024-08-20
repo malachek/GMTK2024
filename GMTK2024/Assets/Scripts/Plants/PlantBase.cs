@@ -35,7 +35,7 @@ public class PlantBase : MonoBehaviour
         my_Points = 0;
         ParseData();
 
-        plantSprite.SetSprite(plantsData.Sprite);
+        //plantSprite.SetSprite(plantsData.Sprite);
 
         GodController.OnRotateJar += CalculateSunlightPoints;
         Soil.OnSoilQualityChange += CalculateSoilPoints;
@@ -69,6 +69,15 @@ public class PlantBase : MonoBehaviour
         my_GoodNeighborLabels = plantsData.GoodNeighborLabels;
         my_BadNeighborLabels = plantsData.BadNeighborLabels;
         my_Income = plantsData.Income;
+    }
+
+    public void SetSeedSprite()
+    {
+        plantSprite.SetSprite(null);
+    }
+    public void SetSproutSprite()
+    {
+        plantSprite.SetSprite(plantsData.Sprite);
     }
 
     public string GetPlantName()

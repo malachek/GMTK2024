@@ -31,6 +31,7 @@ public class SeedState : PlantState
 
     public override void Enter()
     {
+        plantBase.SetSeedSprite();
         Debug.Log($"Plant: {plantBase.name} is Entering Seed State");
         TimeManager.OnNewDay += HandleNewDay;
         base.Enter();
