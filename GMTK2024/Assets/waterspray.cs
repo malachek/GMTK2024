@@ -24,7 +24,7 @@ public class WaterSpray : MonoBehaviour
 
     void Update()
     {
-        HandleCursorActivation();
+        //HandleCursorActivation();
         if (isCursorActive)
         {
             HandleCursorMovement();
@@ -46,6 +46,21 @@ public class WaterSpray : MonoBehaviour
             {
                 Debug.Log("Watering work.");
             }
+        }
+    }
+
+    public void ToggleWaterTime()
+    {
+        isCursorActive = !isCursorActive;
+        cursorInstance.SetActive(isCursorActive);
+
+        if (!isCursorActive)
+        {
+            Debug.Log("Watering stop.");
+        }
+        else
+        {
+            Debug.Log("Watering work.");
         }
     }
 
