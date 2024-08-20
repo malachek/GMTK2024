@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DecorationSprite : MonoBehaviour
 {
+    [SerializeField] Transform cameraTransform;
     public void SetSprite(Sprite sprite)
     {
         GetComponent<SpriteRenderer>().sprite = sprite;
@@ -13,7 +14,8 @@ public class DecorationSprite : MonoBehaviour
 
     protected virtual void Update()
     {
-        transform.parent.transform.LookAt(PlayerSwitch.GetLookLocation());
+        //transform.parent.transform.LookAt(PlayerSwitch.GetLookLocation());
+        transform.rotation = Quaternion.Euler(0, Quaternion.LookRotation(cameraTransform.position - transform.position).eulerAngles.y, 0);
     }
 
     public void ScaleTo(float percentSize)
