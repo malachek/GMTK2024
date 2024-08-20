@@ -9,13 +9,14 @@ public class PlantBase : MonoBehaviour
     public int my_Points { get; private set; }
 
     [Header("Scriptable Object")]
-    [SerializeField] SO_Plants plantsData;
+    [SerializeField] SeedSO plantsData;
 
     protected int my_DesiredSunlight;
     protected int my_DesiredWaterLevel;
     protected int my_DesiredSoilBracket;
     protected List<string> my_GoodNeighborLabels;
-    protected List<string> my_BagNeighborLabels;
+    protected List<string> my_BadNeighborLabels;
+    protected float my_Income;
 
     public int SunPoints { get; private set; }
     public int WaterPoints { get; private set; }
@@ -26,6 +27,8 @@ public class PlantBase : MonoBehaviour
 
     protected int myWaterLevel;
 
+    public bool IsTooSunny { get; private set; }
+
 
     void Awake()
     {
@@ -34,17 +37,14 @@ public class PlantBase : MonoBehaviour
 
         plantSprite.SetSprite(plantsData.Sprite);
 
-        //when jar is rotated, recalculate sunlight
         GodController.OnRotateJar += CalculateSunlightPoints;
         Soil.OnSoilQualityChange += CalculateSoilPoints;
-        // {}.OnWaterPlants += CalculateWaterPoints;
-        // {}.OnSoilDegredation += CaclculateSoilPoints;
-        // {}.OnNewPlantPlaced += CalculateCrowdingPoints;
+        Planting.OnPlantSeed += CalculateCrowdingPoints;
 
+        TimeManager.OnNewDay += ResetWater;
 
         //uncomment for testing purposes
         TimeManager.OnNewDay += PointGenie;
-        TimeManager.OnNewDay += ResetWater;
     }
 
     private void PointGenie(int day)
@@ -57,6 +57,7 @@ public class PlantBase : MonoBehaviour
     {
         CalculateSunlightPoints();
         CalculateSoilPoints();
+        CalculateCrowdingPoints();
     }
 
     void ParseData()
@@ -66,7 +67,8 @@ public class PlantBase : MonoBehaviour
         my_DesiredWaterLevel = plantsData.DesiredWaterLevel;
         my_DesiredSoilBracket = plantsData.DesiredSoilBracket;
         my_GoodNeighborLabels = plantsData.GoodNeighborLabels;
-        my_BagNeighborLabels = plantsData.BadNeighborLabels;
+        my_BadNeighborLabels = plantsData.BadNeighborLabels;
+        my_Income = plantsData.Income;
     }
 
     private void ResetWater(int day)
@@ -80,13 +82,23 @@ public class PlantBase : MonoBehaviour
         CalculateWaterPoints();
     }
 
+    public float GetIncome()
+    {
+        return my_Income * (SunPoints + WaterPoints + SoilPoints + 8) / 16;
+    }
+
     // DONE
     void CalculateSunlightPoints() 
     {
-        int newPoints = PlantConditionCalc.CalcSunPoints(this.transform.position, my_DesiredSunlight);
-        //Debug.Log($"I want {my_DesiredSunlight} light level. this equates to {newPoints}");
+        (int newPoints , bool isTooSunny) = PlantConditionCalc.CalcSunPointsAndIsTooSunny(this.transform.position, my_DesiredSunlight);
+
         my_Points += (newPoints - SunPoints);
         SunPoints = newPoints;
+        IsTooSunny = isTooSunny;
+
+        /*Debug.Log($"POSITION: {this.transform.position}");
+        Debug.Log($"{name} want {my_DesiredSunlight} light level. this equates to {newPoints}");
+        if (newPoints < 2) Debug.Log(isTooSunny ? "Too Sunnyyyy" : "Too Darkkkk");*/
     }
 
     // TO DO
@@ -115,10 +127,11 @@ public class PlantBase : MonoBehaviour
     // TO DO
     void CalculateCrowdingPoints()
     {
+        return;
         //find neighbors
-        int newPoints = PlantConditionCalc.CalcCrowdingPoints();
+        /*int newPoints = PlantConditionCalc.CalcCrowdingPoints();
         my_Points += (newPoints - CrowdingPoints);
         CrowdingPoints = newPoints;
-        return;
+        return;*/
     }
 }

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9767c4d389d1441b52403f84c01c6a, type: 3}
+  m_Name: WaterDialogues
+  m_EditorClassIdentifier: 
+  dialogueValuesList:
+  - value: 0
+    text: "The moisture here is just perfect, don't change it\_"
+  - value: 0
+    text: The moisture here is pretty good, could just use some minor adjustments
+      though
+  - value: 0
+    text: "Wow, the moisture in here is really intense, maybe hold back on the water
+      a bit tomorrow\_"
+  - value: 0
+    text: It feels pretty dry in here, I think some more sprays of water could help
+      out.
+  dialogueCategory: 1

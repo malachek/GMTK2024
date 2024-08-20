@@ -5,7 +5,7 @@ using UnityEngine;
 public class MousePosition3D : MonoBehaviour {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private LayerMask buttonMask;
+    //[SerializeField] private LayerMask buttonMask;
 
     private void Update() {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
