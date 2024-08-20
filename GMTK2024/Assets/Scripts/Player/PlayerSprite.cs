@@ -33,7 +33,7 @@ public class PlayerSprite : MonoBehaviour
 
     public void UpdateSprite(Vector2 moveDir)
     {
-        Debug.Log(moveDir);
+        //Debug.Log(moveDir);
         switch ((int)moveDir.x, (int)moveDir.y)
         {
             case (0, -1):

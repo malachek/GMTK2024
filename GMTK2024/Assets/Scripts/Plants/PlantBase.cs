@@ -71,6 +71,11 @@ public class PlantBase : MonoBehaviour
         my_Income = plantsData.Income;
     }
 
+    public string GetPlantName()
+    {
+        return plantsData.objectsName;
+    }
+
     private void ResetWater(int day)
     {
         myWaterLevel = 0;
@@ -127,11 +132,33 @@ public class PlantBase : MonoBehaviour
     // TO DO
     void CalculateCrowdingPoints()
     {
-        return;
-        //find neighbors
-        /*int newPoints = PlantConditionCalc.CalcCrowdingPoints();
+        int neighborQuality = 0;
+
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3f);
+        //Debug.Log($"col length: {hitColliders.Length}");
+        foreach (Collider hitCollider in hitColliders)
+        {
+            Debug.Log($"Collided with : {hitCollider.gameObject.name}");
+            string colPlantName = hitCollider.gameObject.GetComponent<PlantBase>().GetPlantName();
+            if (colPlantName != null)
+            {
+                if (my_GoodNeighborLabels.Contains(colPlantName))
+                {
+                    Debug.Log("good neighbor");
+                    neighborQuality++;
+                }
+                else if(my_BadNeighborLabels.Contains(colPlantName))
+                {
+                    Debug.Log("bad neighbor");
+                    neighborQuality--;
+                }
+            }
+        }
+
+        int newPoints = Mathf.Clamp(neighborQuality, -1, 1) + 1;
+
         my_Points += (newPoints - CrowdingPoints);
         CrowdingPoints = newPoints;
-        return;*/
+        return;
     }
 }

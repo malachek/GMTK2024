@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class DecorationSprite : MonoBehaviour
 {
-    [SerializeField] Transform GodCameraTransform;
-    [SerializeField] Transform SmallCameraTransform;
+    Transform GodCameraTransform;
+    Transform SmallCameraTransform;
 
     bool IsGodMode = true;
 
@@ -15,6 +15,13 @@ public class DecorationSprite : MonoBehaviour
         PlayerSwitch.OnSwitchToGod += SwitchToGod;
         PlayerSwitch.OnSwitchToSmall += SwitchToSmall;
     }
+
+    private void Start()
+    {
+        GodCameraTransform = PlayerSwitch.GetGodCameraLocation();
+        SmallCameraTransform = PlayerSwitch.GetSmallCameraLocation();
+    }
+
     public void SetSprite(Sprite sprite)
     {
         GetComponent<SpriteRenderer>().sprite = sprite;

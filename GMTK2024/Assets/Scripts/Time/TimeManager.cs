@@ -13,6 +13,7 @@ public class TimeManager : MonoBehaviour
     void Awake()
     {
         day = 0;
+        StartNewDay();
     }
 
     // Update is called once per frame
@@ -26,8 +27,8 @@ public class TimeManager : MonoBehaviour
 
     public void StartNewDay()
     {
-        Debug.Log($"Day {day} started!");
         day++;
+        Debug.Log($"Day {day} started!");
         OnNewDay?.Invoke(day);
     }
 }
