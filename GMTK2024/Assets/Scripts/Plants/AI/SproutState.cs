@@ -79,13 +79,13 @@ public class SproutState : PlantState
                 return (plantBase.my_Points >= 3);
 
             case 2:
-                return (plantBase.my_Points >= 5);
+                return (plantBase.my_Points >= 4);
 
             case 3:
-                return (plantBase.my_Points >= 7);
+                return (plantBase.my_Points >= 5);
 
             case 4:
-                return (plantBase.my_Points >= 9);
+                return (plantBase.my_Points >= 6);
         }
         return false;
     }
