@@ -38,9 +38,13 @@ public class DecorationSprite : MonoBehaviour
 
     IEnumerator ColorMeHappy()
     {
-        GetComponent<SpriteRenderer>().color = Color.green;
-        yield return new WaitForSeconds(.5f);
-        GetComponent<SpriteRenderer>().color = c;
+        if (c != null)
+        {
+            GetComponent<SpriteRenderer>().color = Color.green;
+            yield return new WaitForSeconds(.5f);
+            GetComponent<SpriteRenderer>().color = c;
+        }
+        yield return null;
     }
 
     void SwitchToGod()

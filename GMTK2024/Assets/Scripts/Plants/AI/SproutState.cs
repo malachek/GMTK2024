@@ -92,7 +92,7 @@ public class SproutState : PlantState
 
     public override void Enter()
     {
-        plantBase.SetSproutSprite();
+        //plantBase.SetSproutSprite();
         Debug.Log($"Plant: {plantBase.name} is Entering Sprout State");
         TimeManager.OnNewDay += HandleNewDay;
         plantBase.plantSprite.ScaleTo(growthQuarter / 4);

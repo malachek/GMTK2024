@@ -16,6 +16,7 @@ public class MusicHandler : MonoBehaviour
             //audioSources[i].loop = false;
             //audioSources[i].Play();
         }
+        audioSources[8].mute = false;
 
         StartLooping();
     }
@@ -28,7 +29,7 @@ public class MusicHandler : MonoBehaviour
             source.Play();
         }
 
-        InvokeRepeating(nameof(ResetAudioSources), 0f, 30f);
+        InvokeRepeating(nameof(ResetAudioSources), 0f, 25.61f);
     }
 
     void ResetAudioSources()

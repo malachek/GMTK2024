@@ -67,12 +67,13 @@ public class TutorialManager : MonoBehaviour
 
     void PlantingTutorial()
     {
-        Planting.OnPlantSeed -= PlantingTutorial;
         StartTutorial("Planting!\r\n\r\nClick on a seed pouch from the shelf\r\n\r\nPick up the seed that is dropped on the table and click the dirt to plant it\r\n\r\nHere's 3 ferns to test with!\r\n\r\n\r\n");
     }
 
     void NewDayTutorial()
     {
+        Planting.OnPlantSeed -= NewDayTutorial;
+
         StartTutorial("Plants take time to grow!\r\n\r\nClick on the sun to go into the next day");
     }
 
