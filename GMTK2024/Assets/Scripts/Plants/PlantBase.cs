@@ -44,7 +44,7 @@ public class PlantBase : MonoBehaviour
         TimeManager.OnNewDay += ResetWater;
 
         //uncomment for testing purposes
-        TimeManager.OnNewDay += PointGenie;
+        //TimeManager.OnNewDay += PointGenie;
     }
 
     private void PointGenie(int day)
@@ -69,6 +69,11 @@ public class PlantBase : MonoBehaviour
         my_GoodNeighborLabels = plantsData.GoodNeighborLabels;
         my_BadNeighborLabels = plantsData.BadNeighborLabels;
         my_Income = plantsData.Income;
+    }
+
+    public string GetPlantName()
+    {
+        return plantsData.objectsName;
     }
 
     private void ResetWater(int day)
@@ -96,6 +101,11 @@ public class PlantBase : MonoBehaviour
         SunPoints = newPoints;
         IsTooSunny = isTooSunny;
 
+        if (SunPoints == 2)
+        {
+            plantSprite.BeHappy();
+        }
+
         /*Debug.Log($"POSITION: {this.transform.position}");
         Debug.Log($"{name} want {my_DesiredSunlight} light level. this equates to {newPoints}");
         if (newPoints < 2) Debug.Log(isTooSunny ? "Too Sunnyyyy" : "Too Darkkkk");*/
@@ -108,6 +118,13 @@ public class PlantBase : MonoBehaviour
         my_Points += (newPoints - WaterPoints);
         WaterPoints = newPoints;
         Debug.Log($"{gameObject.name} got waterred. waterlevel: {myWaterLevel} | desiredwater: {my_DesiredWaterLevel} | waterpoints: {WaterPoints}");   
+        
+        if(WaterPoints == 3)
+        {
+            plantSprite.BeHappy();
+        }
+
+        
         return;
     }
 
@@ -121,17 +138,49 @@ public class PlantBase : MonoBehaviour
         int newPoints = Mathf.Min(3 - (my_DesiredSoilBracket - soiLHealthBracket), 3);
         my_Points += (newPoints - SoilPoints);
         SoilPoints = newPoints;
+        if (SoilPoints == 3)
+        {
+            plantSprite.BeHappy();
+        }
         return;
     }
 
     // TO DO
     void CalculateCrowdingPoints()
     {
-        return;
-        //find neighbors
-        /*int newPoints = PlantConditionCalc.CalcCrowdingPoints();
+        int neighborQuality = 0;
+
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3f);
+        //Debug.Log($"col length: {hitColliders.Length}");
+        foreach (Collider hitCollider in hitColliders)
+        {
+            Debug.Log($"Collided with : {hitCollider.gameObject.name}");
+            string colPlantName = hitCollider.gameObject.GetComponent<PlantBase>()?.GetPlantName();
+            if (colPlantName != null)
+            {
+                Debug.Log("I hit a plant called " +  colPlantName);
+                if (my_GoodNeighborLabels.Contains(colPlantName))
+                {
+                    Debug.Log("good neighbor");
+                    neighborQuality++;
+                }
+                else if(my_BadNeighborLabels.Contains(colPlantName))
+                {
+                    Debug.Log("bad neighbor");
+                    neighborQuality--;
+                }
+            }
+        }
+
+        if (neighborQuality >= 1)
+        {
+            plantSprite.BeHappy();
+        }
+
+        int newPoints = Mathf.Clamp(neighborQuality, -1, 1) + 1;
+
         my_Points += (newPoints - CrowdingPoints);
         CrowdingPoints = newPoints;
-        return;*/
+        return;
     }
 }

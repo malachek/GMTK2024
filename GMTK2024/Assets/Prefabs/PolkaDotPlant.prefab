@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5901551190823985787}
   - component: {fileID: 2915013290862045942}
   - component: {fileID: 2337628802524125261}
+  - component: {fileID: -8664375252573774157}
   m_Layer: 0
   m_Name: PolkaDotPlant
   m_TagString: Untagged
@@ -60,6 +61,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ba6df0a4023ae4aac1a223c915a8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &-8664375252573774157
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3412287939565325392}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4537594987235935210
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +156,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: eb7a1e35b44d84d42987140a3db10426, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5eee82e90a7e40a458514f98cd9cb8e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -144,7 +166,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &6103779794511322943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,5 +179,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04520a05bd0d0b4083ccca43c026d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GodCameraTransform: {fileID: 0}
-  SmallCameraTransform: {fileID: 0}
