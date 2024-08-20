@@ -11,11 +11,13 @@ public class BugsAI : MonoBehaviour, IInteractable{
         Talking,
     }
 
-    [SerializeField] private GameObject plantBase;
+    [SerializeField] private PlantBase plantBase;
+    private DialogueSelector dialogueSelector;
     private BugState bugState;
     private NavMeshAgent agent;
     private Vector3 currentTargetPoint;
     private bool onTargetPoint;
+    private bool interactedOnce;
 
     [SerializeField] private float range;
     [SerializeField] private float paddingDistance;
@@ -23,6 +25,7 @@ public class BugsAI : MonoBehaviour, IInteractable{
     [SerializeField] private AIDialogueUI dialogueUI;
 
     private void Start(){
+        dialogueSelector = GetComponent<DialogueSelector>();
         bugState = BugState.Wandering;
         agent = GetComponent<NavMeshAgent>();
         currentTargetPoint = SetNewPoint();
@@ -32,6 +35,11 @@ public class BugsAI : MonoBehaviour, IInteractable{
     private void Update(){
         switch (bugState){
             case BugState.Wandering:
+
+                if(interactedOnce){
+                    StopCoroutine(CoolDownDialogue());
+                    interactedOnce = false;
+                }
 
                 if((Mathf.Abs((currentTargetPoint - transform.position).magnitude) - paddingDistance) <= 0){
                     onTargetPoint = true;
@@ -67,10 +75,15 @@ public class BugsAI : MonoBehaviour, IInteractable{
 
     public void Interact()
     {
-        StopCoroutine(ResumeWalk());
-        bugState = BugState.Talking;
-        dialogueUI.TalkToPlayer("Hello Foe!");
-        StartCoroutine(ResumeWalk());
+        if(!interactedOnce){
+            interactedOnce = true;
+            StartCoroutine(CoolDownDialogue());
+            StopCoroutine(ResumeWalk());
+            bugState = BugState.Talking;
+            string dialogue = dialogueSelector.SelectADialogue();
+            dialogueUI.TalkToPlayer(dialogue);
+            StartCoroutine(ResumeWalk());
+        }
     }
 
     public void OnSelected()
@@ -84,5 +97,10 @@ public class BugsAI : MonoBehaviour, IInteractable{
         agent.SetDestination(currentTargetPoint);
         bugState = BugState.Wandering;
         dialogueUI.Hide();
+    }
+
+    IEnumerator CoolDownDialogue(){
+        yield return new WaitForSeconds(dialogueTime);
+        interactedOnce = false;
     }
 }

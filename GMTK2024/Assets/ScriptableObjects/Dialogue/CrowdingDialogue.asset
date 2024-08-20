@@ -12,5 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d9767c4d389d1441b52403f84c01c6a, type: 3}
   m_Name: CrowdingDialogue
   m_EditorClassIdentifier: 
-  dialogueValuesList: []
-  dialogueCategory: 0
+  dialogueValuesList:
+  - value: 0
+    text: "Hey I really like the plants and insects that are around me right now.
+      Can you please not change that\_"
+  - value: 0
+    text: My neighbors are pretty good right now...I think they could be a bit better
+      though
+  - value: 0
+    text: "My neighbors right now aren't really the best, could you maybe change
+      that\_"
+  dialogueCategory: 3

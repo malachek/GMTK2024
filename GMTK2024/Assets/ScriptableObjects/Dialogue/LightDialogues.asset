@@ -12,5 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d9767c4d389d1441b52403f84c01c6a, type: 3}
   m_Name: LightDialogues
   m_EditorClassIdentifier: 
-  dialogueValuesList: []
+  dialogueValuesList:
+  - value: 0
+    text: It's a bit too hot in here right now, I think the sunlight is hitting us
+      too much right now
+  - value: 0
+    text: I don't think the plants are getting enough sunlight right now
+  - value: 0
+    text: The sunlight is hitting us just perfectly, its great
   dialogueCategory: 0
