@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6237797934276870481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8927432239636860807}
+  - component: {fileID: 6431935398210463450}
+  m_Layer: 0
+  m_Name: PlayerInventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8927432239636860807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6237797934276870481}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6431935398210463450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6237797934276870481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b70b7eee6f10504f91b49b6e1abc930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 300
+  maxInvetorySize: 15
+  seedsInventory:
+  - {fileID: 11400000, guid: 915f6c0f673ec464990b1d66bb5fdab7, type: 2}
+  - {fileID: 11400000, guid: 3caff81f8ab171b4d89aead6b29b1cf0, type: 2}
+  - {fileID: 11400000, guid: db90aee920813f44dabf3e6e2761ee4a, type: 2}
+  - {fileID: 11400000, guid: 74ec18a460bdd6243887c565adca57b8, type: 2}
+  - {fileID: 11400000, guid: 020b14a5067e24046a755050909b6a1d, type: 2}
+  - {fileID: 11400000, guid: c023de99f5319ed4381b7f1e429a711a, type: 2}
+  - {fileID: 11400000, guid: 3c73550ecd676c34bbc7550e92f9e22c, type: 2}
+  - {fileID: 11400000, guid: e0af6b8359ce0e64caf55e0bf8326c7b, type: 2}
+  fertilizerInventory:
+  - {fileID: 11400000, guid: f05a9f411c33fda429b54ea4a94285bc, type: 2}
+  - {fileID: 11400000, guid: d8a75fa4153aa9d489f21730ed822f41, type: 2}
+  - {fileID: 11400000, guid: 9bfb859d2bd463648914efbafbc850d1, type: 2}
+  - {fileID: 11400000, guid: c8402ead6de1175478066818476267fc, type: 2}
+  decorationsInventory:
+  - {fileID: 11400000, guid: 1c29c37f0ceba914d8982733c8f47da7, type: 2}
+  - {fileID: 11400000, guid: d6c616b2e0764e646aff939c69bb7c2a, type: 2}
+  - {fileID: 11400000, guid: b9505c1c3cb9f734ead66462c77b06c0, type: 2}

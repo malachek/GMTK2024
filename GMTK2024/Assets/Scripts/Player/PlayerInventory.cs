@@ -51,6 +51,16 @@ public class PlayerInventory : MonoBehaviour{
         return -1;
     }
 
+    public InventoryStackSO GetInventoryStackSO(EItemType eItemType, InventoryStackSO[] inventory){
+        foreach (InventoryStackSO inventoryStackSO in inventory){
+            if(inventoryStackSO.stackType == eItemType){
+                return inventoryStackSO;
+            }
+        }
+        Debug.Log("Stack Not FOUND");
+        return null;
+    }
+
     public BaseDataSO GetItemFromInventory(BaseDataSO baseDataSO, InventoryStackSO[] inventory){
         int index = SearchInInventory(baseDataSO, inventory);
         if(index > -1){
