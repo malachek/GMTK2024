@@ -25,7 +25,7 @@ public class SeedState : PlantState
 
     private bool CanSprout()
     {
-        return (daysPassed * plantBase.my_Points >= 8);
+        return (daysPassed * plantBase.my_Points >= 4);
     }
 
     public override void Enter()

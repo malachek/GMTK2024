@@ -29,17 +29,21 @@ public static class PlantConditionCalc
 
     //private static int MaxPoints() => maxSunPoints + maxWaterPoints + maxRoomPoints;
 
-    public static int CalcSunPoints(Vector3 plantPos, int desiredLightLevel)
+    public static (int, bool) CalcSunPointsAndIsTooSunny(Vector3 plantPos, int desiredLightLevel)
     {
         //i sacrificed readability for optimization - bc otherwise this would kill performance
-        switch(1f - (float)((maxDistance - Vector3.Distance(plantPos, sunPosition)) / (maxDistance - minDistance)))
+
+        switch (1f - (float)((maxDistance - Vector3.Distance(plantPos, sunPosition)) / (maxDistance - minDistance)))
         {
             case <= .33f:
-                return 2 - Mathf.Abs(desiredLightLevel - 2);
+                //Debug.Log("BRIGHT, light level 0");
+                return (2 - Mathf.Abs(desiredLightLevel - 2), 2 > desiredLightLevel);
             case <= .67f:
-                return 2 - Mathf.Abs(desiredLightLevel - 1);
+                //Debug.Log("AVERAGE, light level 1");
+                return (2 - Mathf.Abs(desiredLightLevel - 1), 1 > desiredLightLevel);
         }
-        return 2 - desiredLightLevel;
+        //Debug.Log("DARK, light level 2");
+        return (2 - desiredLightLevel, 0 > desiredLightLevel);
     }
 
     public static int CalcWaterPoints(int currentWater, int desiredWater)
@@ -63,9 +67,9 @@ public static class PlantConditionCalc
         }
     }
 
-    public static int CalcCrowdingPoints()
+    public static int CalcCrowdingPoints(int goodNeighbors, int badNeighbors)
     {
-        return -1;
+        return Mathf.Clamp(goodNeighbors - badNeighbors + 1, 0, 2);
     }
 
 }

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class Planting : MonoBehaviour
 {
@@ -12,6 +14,9 @@ public class Planting : MonoBehaviour
     private PrefabSelector plantSelector;
     private GameObject previewInstance;
     private GameObject lastSelectedPrefab;
+
+    public delegate void PlantSeed();
+    public static event PlantSeed OnPlantSeed;
 
     void Start()
     {
@@ -66,6 +71,7 @@ public class Planting : MonoBehaviour
         {
             // Instantiate the actual prefab at the preview's position
             Instantiate(plantSelector.GetSelectedPrefab(), previewInstance.transform.position, Quaternion.identity);
+            OnPlantSeed?.Invoke();
         }
     }
 
