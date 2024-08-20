@@ -56,7 +56,7 @@ public class BuyItemUI : MonoBehaviour{
     }
 
     IEnumerator Timer(){
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
     }
 }

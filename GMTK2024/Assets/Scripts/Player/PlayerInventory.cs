@@ -7,12 +7,13 @@ public class PlayerInventory : MonoBehaviour{
 
     [SerializeField] private float money;
     [SerializeField] private int maxInvetorySize;
-    [SerializeField] private InventoryStackSO[] seedsInventory, fertilizerInventory;
+    [SerializeField] private InventoryStackSO[] seedsInventory, fertilizerInventory, decorationsInventory;
     private int itemsInInventory;
 
     public float Money {get => money; private set => money = value;}
     public InventoryStackSO[] SeedsInventory {get {return seedsInventory;} private set{}}
     public InventoryStackSO[] FertilizerInventory {get {return fertilizerInventory;} private set{}}
+    public InventoryStackSO[] DecorationsInventory {get {return DecorationsInventory;} private set{}}
 
     public static PlayerInventory Instance {get; private set;}
 

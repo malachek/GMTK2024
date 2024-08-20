@@ -16,5 +16,8 @@ public enum EItemType{
     BasicFertilizer,
     BalancedFertilizer,
     PhosphourousFertilizer,
-    PremiumFertilizer
+    PremiumFertilizer,
+    Rock1,
+    Rock2,
+    Rock3
 }

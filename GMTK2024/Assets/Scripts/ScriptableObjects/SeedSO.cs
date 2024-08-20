@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/BaseDataSO/SeedSO")]
+[CreateAssetMenu(menuName = "ScriptableObjects/SeedSO")]
 public class SeedSO : BaseDataSO{
 
     [Header("Seed Fields")]
