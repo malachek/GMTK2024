@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ba6df0a4023ae4aac1a223c915a8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bug: {fileID: 7802112188698092994, guid: 8d667bee1c9146147ba3e86a7e8b0bd9, type: 3}
 --- !u!135 &-5033703377580027590
 SphereCollider:
   m_ObjectHideFlags: 0
