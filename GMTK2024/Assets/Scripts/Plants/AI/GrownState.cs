@@ -8,6 +8,7 @@ public class GrownState : PlantState
 {
     static bool FirstHasBeenPlanted;
 
+
     public delegate void ReachedFullGrown();
     public static event ReachedFullGrown OnReachedFullGrown;
 
