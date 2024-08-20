@@ -50,7 +50,7 @@ public class DialogueSelector : MonoBehaviour{
 
     private string GetAssignedDialogue(DialogueListSO dialogueList, int value){
         foreach (DialogueValue dialogueValue in dialogueList.dialogueValuesList){
-            if(dialogueValue.value == value){
+            if(dialogueValue.Value == value){
                 return dialogueValue.text;
             }
         }

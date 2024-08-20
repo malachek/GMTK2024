@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: CrowdingDialogue
   m_EditorClassIdentifier: 
   dialogueValuesList:
-  - value: 2
+  - Value: 2
     text: "Hey I really like the plants and insects that are around me right now.
       Can you please not change that\_"
-  - value: 1
+  - Value: 1
     text: My neighbors are pretty good right now...I think they could be a bit better
       though
-  - value: 0
+  - Value: 0
     text: "My neighbors right now aren't really the best, could you maybe change
       that\_"
   dialogueCategory: 3

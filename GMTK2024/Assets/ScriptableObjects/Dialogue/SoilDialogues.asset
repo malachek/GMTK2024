@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: SoilDialogues
   m_EditorClassIdentifier: 
   dialogueValuesList:
-  - value: 3
+  - Value: 3
     text: I never seen soil this health and full of nutrients before, can't it be
       like this all the time
-  - value: 2
+  - Value: 2
     text: "Honestly the soil is pretty health but I think it could be better\_"
-  - value: 1
+  - Value: 1
     text: "Hey have you looked at the health of this soil recently, it's getting
       pretty bad. You should put some fertilizer in here soon.\_"
-  - value: 0
+  - Value: 0
     text: This soil is honestly horrid, I don't know if anything will be able to
       grow in these conditions. You need to put some fertilizer in here soon
   dialogueCategory: 2
