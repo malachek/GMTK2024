@@ -1554,10 +1554,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bba08668c8183b47add5902116b2be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 330585545}
+  mainCamera: {fileID: 182642850}
   layerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 40
   previewMaterial: {fileID: 2100000, guid: 2f94c09f02860d54387ad651c8d69601, type: 2}
 --- !u!114 &573453897
 MonoBehaviour:
@@ -1571,7 +1571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5049ebd846b7f5d4291d483651e9f36e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 330585545}
+  mainCamera: {fileID: 182642850}
   layerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -5902,7 +5902,6 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 706191581}
-  - {fileID: 182642851}
   - {fileID: 573453898}
   - {fileID: 1414040737}
   - {fileID: 939620512}
@@ -5916,3 +5915,4 @@ SceneRoots:
   - {fileID: 1556403536}
   - {fileID: 1402835118}
   - {fileID: 1053560633}
+  - {fileID: 182642851}

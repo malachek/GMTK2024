@@ -3,8 +3,6 @@ using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Windows;
 
 public class GodController : MonoBehaviour
 {
@@ -36,12 +34,6 @@ public class GodController : MonoBehaviour
     private float _cinemachineTargetPitch;
 
 
-#if ENABLE_INPUT_SYSTEM
-    private PlayerInput _playerInput;
-#endif
-
-    private StarterAssetsInputs _input;
-
     private PlayerSwitch _playerSwitch;
     [SerializeField] CinemachineVirtualCamera myCamera;
 
@@ -51,17 +43,6 @@ public class GodController : MonoBehaviour
 
     private const float _threshold = 0.01f;
 
-    private bool IsCurrentDeviceMouse
-    {
-        get
-        {
-#if ENABLE_INPUT_SYSTEM
-            return _playerInput.currentControlScheme == "KeyboardMouse";
-#else
-				return false;
-#endif
-        }
-    }
 
     public delegate void RotateJar();
     public static event RotateJar OnRotateJar;
@@ -73,8 +54,6 @@ public class GodController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _input = GetComponent<StarterAssetsInputs>();
-        _playerInput = GetComponent<PlayerInput>();
         _playerSwitch = FindObjectOfType<PlayerSwitch>();
         myCamera.m_Lens.FieldOfView = OriginalGodCameraFOV;
 
@@ -94,15 +73,18 @@ public class GodController : MonoBehaviour
 
     private void RotateAndZoom()
     {
-        if (_input.move.x != 0f)
+        float hor = Input.GetAxis("Horizontal");
+        float vert = Input.GetAxis("Vertical");
+
+        if (hor != 0f)
         {
             OnRotateJar?.Invoke();
-            JarTransform.Rotate(0f, _input.move.x * -2f * myCamera.m_Lens.FieldOfView * Time.deltaTime, 0f);
+            JarTransform.Rotate(0f, hor * -2f * myCamera.m_Lens.FieldOfView * Time.deltaTime, 0f);
         }
 
-        if(_input.move.y != 0f)
+        if (vert != 0f)
         {
-            float newFOV = myCamera.m_Lens.FieldOfView - _input.move.y * .25f;
+            float newFOV = myCamera.m_Lens.FieldOfView - vert * .25f;
 
             if (newFOV >= 70f)
             {
@@ -133,13 +115,13 @@ public class GodController : MonoBehaviour
 
     private void SwitchPlayer()
     {
-        if (_input.switchPlayer)
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            _input.sprint = false;
+            /*_input.sprint = false;
             _input.jump = false;
             _input.move = Vector2.zero;
             _input.look = Vector2.zero;
-            _input.switchPlayer = false;
+            _input.switchPlayer = false;*/
             _playerSwitch.SwitchPlayer();
         }
     }
@@ -149,26 +131,35 @@ public class GodController : MonoBehaviour
     private void CameraRotation()
     {
 
-        // if there is an input and camera position is not fixed
-        if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
-        {
-            //Don't multiply mouse input by Time.deltaTime;
-            float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+        // Get mouse input
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
 
-            _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
-            _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
+        // Calculate squared magnitude of the input
+        float sqrMagnitude = Mathf.Pow(mouseX, 2) + Mathf.Pow(mouseY, 2);
+
+        bool isMouseInput = Mathf.Abs(mouseX) > 0.01f || Mathf.Abs(mouseY) > 0.01f;
+
+        // if there is an input and camera position is not fixed
+        if (sqrMagnitude >= _threshold && !LockCameraPosition)
+        {
+            // Don't multiply mouse input by Time.deltaTime for mouse input
+            float deltaTimeMultiplier = isMouseInput ? 1.0f : Time.deltaTime;
+
+            _cinemachineTargetYaw += mouseX * deltaTimeMultiplier;
+            _cinemachineTargetPitch += mouseY * deltaTimeMultiplier;
         }
 
-        // clamp our rotations so our values are limited 360 degrees
+        // Clamp our rotations so our values are limited to 360 degrees
         _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, -45f, 45f);
         _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
-        CameraPivot.Rotate(0f, 50f * _input.look.x * Time.deltaTime, 0f);
+        // Rotate the camera pivot
+        CameraPivot.Rotate(0f, 50f * mouseX * Time.deltaTime, 0f);
 
-        return;
         // Cinemachine will follow this target
-        CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
-            _cinemachineTargetYaw, 0.0f);
+        CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride, _cinemachineTargetYaw, 0.0f);
+
     }
 
     private static float ClampAngle(float lfAngle, float lfMin, float lfMax)

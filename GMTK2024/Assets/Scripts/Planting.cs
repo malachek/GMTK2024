@@ -8,9 +8,11 @@ using UnityEngine.UIElements;
 
 public class Planting : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera mainCamera;
-    [SerializeField] private LayerMask layerMask; // Layer mask for the ground or surfaces where the object can be placed
-    [SerializeField] private Material previewMaterial; // Material to use for the preview (semi-transparent)
+    //[SerializeField] private CinemachineVirtualCamera mainCamera;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private LayerMask groundMask; 
+    [SerializeField] private LayerMask packMask;
+    [SerializeField] private Material previewMaterial; 
 
     private PrefabSelector plantSelector;
     private GameObject previewInstance;
@@ -26,6 +28,8 @@ public class Planting : MonoBehaviour
 
     void Update()
     {
+        HandlePrefabSelection();
+
         // Check selected prefab
         GameObject selectedPrefab = plantSelector.GetSelectedPrefab();
         if (selectedPrefab == null)
@@ -47,7 +51,29 @@ public class Planting : MonoBehaviour
         //instantiate
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            PlacePrefab();
+            if (!IsClickingOnSelectableObject())
+            {
+                PlacePrefab();
+            }
+        }
+    }
+
+    void HandlePrefabSelection()
+    {
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        {
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, float.MaxValue, packMask))
+            {
+                SeedPackSelection selector = hit.collider.GetComponent<SeedPackSelection>();
+                if (selector != null)
+                {
+                    plantSelector.SelectPrefab(selector.seedPackIndex);
+                    lastSelectedPrefab = null; 
+                }
+            }
         }
     }
 
@@ -59,8 +85,9 @@ public class Planting : MonoBehaviour
 
     void UpdatePreviewPosition()
     {
-        Ray ray = mainCamera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, layerMask))
+        //Ray ray = mainCamera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, groundMask))
         {
             previewInstance.transform.position = hit.point;
         }
@@ -92,5 +119,15 @@ public class Planting : MonoBehaviour
             Destroy(previewInstance);
             previewInstance = null;
         }
+    }
+
+    bool IsClickingOnSelectableObject()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, packMask))
+        {
+            return hit.collider.GetComponent<SeedPackSelection>() != null;
+        }
+        return false;
     }
 }
