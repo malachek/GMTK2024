@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsName: PolkaDotPlantSeed
   objectsDescription: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 5eee82e90a7e40a458514f98cd9cb8e0, type: 3}
   stackMax: 0
   eItemType: 4
   DesiredSunlight: 0

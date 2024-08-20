@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantSprite: {fileID: 6103779794511322943}
-  plantsData: {fileID: 11400000, guid: a966c546496dcc14da79faa07f2efc35, type: 2}
+  plantsData: {fileID: 11400000, guid: f2d9003195d45d24087ca44a64f2fc86, type: 2}
 --- !u!114 &2337628802524125261
 MonoBehaviour:
   m_ObjectHideFlags: 0

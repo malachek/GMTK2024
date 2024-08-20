@@ -4,19 +4,45 @@ using UnityEngine;
 
 public class PrefabSelector : MonoBehaviour
 {
-    public GameObject[] plants; 
+    public GameObject[] seedPacks;
+    public GameObject[] plantBases;
+
     private GameObject selectedPlant = null;
+    private int selectedPlantIndex = -1;
+
+    [SerializeField] MusicHandler musicPlayer;
 
     public void SelectPrefab(int index)
     {
-        if (index >= 0 && index < plants.Length)
+        if (index >= 0 && index < seedPacks.Length)
         {
-            selectedPlant = plants[index];
+            selectedPlant = seedPacks[index];
+            selectedPlantIndex = index;
+            //Debug.Log($"Selected: {selectedPlant.name}");
         }
     }
 
-    public GameObject GetSelectedPrefab()
+    public void DeselectPrefab()
     {
+        selectedPlant = null;
+        selectedPlantIndex = -1;
+    }
+
+    public void PlantMusicQueue()
+    {
+        musicPlayer.UnMutePattern(selectedPlantIndex);
+    }
+
+    public GameObject GetSelectedSeedPrefab()
+    {
+        //Debug.Log($"Attempting to plant {selectedPlant.name}");
+        if(selectedPlantIndex == -1) return null;
+        return seedPacks[selectedPlantIndex];
         return selectedPlant;
+    }
+
+    public GameObject GetSelectedPlantPrefab()
+    {
+        return plantBases[selectedPlantIndex];
     }
 }

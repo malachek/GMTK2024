@@ -18,6 +18,8 @@ public class Planting : MonoBehaviour
     private GameObject previewInstance;
     private GameObject lastSelectedPrefab;
 
+    [SerializeField] GameObject SoilTop;
+
     public delegate void PlantSeed();
     public static event PlantSeed OnPlantSeed;
 
@@ -31,7 +33,7 @@ public class Planting : MonoBehaviour
         HandlePrefabSelection();
 
         // Check selected prefab
-        GameObject selectedPrefab = plantSelector.GetSelectedPrefab();
+        GameObject selectedPrefab = plantSelector.GetSelectedSeedPrefab();
         if (selectedPrefab == null)
         {
             DestroyPreview(); // Destroy the preview if no prefab is selected
@@ -80,6 +82,7 @@ public class Planting : MonoBehaviour
     void CreatePreview(GameObject prefab)
     {
         previewInstance = Instantiate(prefab);
+        previewInstance.layer = 0;
         SetPreviewMaterial(previewInstance, previewMaterial);
     }
 
@@ -97,10 +100,20 @@ public class Planting : MonoBehaviour
     {
         if (previewInstance != null)
         {
+            plantSelector.PlantMusicQueue();
             // Instantiate the actual prefab at the preview's position
-            Instantiate(plantSelector.GetSelectedPrefab(), previewInstance.transform.position, Quaternion.identity);
+            var justPlanted = Instantiate(plantSelector.GetSelectedPlantPrefab(), previewInstance.transform.position, Quaternion.identity);
+            SetParent(justPlanted.transform, SoilTop.transform);
+            plantSelector.DeselectPrefab();
             OnPlantSeed?.Invoke();
         }
+    }
+
+    void SetParent(Transform child, Transform parent)
+    {
+        child.SetParent(parent);
+        //child.localPosition = Vector3.zero;
+        //child.localRotation = Quaternion.identity;
     }
 
     void SetPreviewMaterial(GameObject obj, Material material)
