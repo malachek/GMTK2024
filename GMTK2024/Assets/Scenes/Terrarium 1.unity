@@ -1183,7 +1183,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446737968}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -4238,26 +4238,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sprout (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 2210716661140478453, guid: e6df7b7a01007de4ab9262c845ea7331,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381143931293390835, guid: e6df7b7a01007de4ab9262c845ea7331,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.0005
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381143931293390835, guid: e6df7b7a01007de4ab9262c845ea7331,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.0125
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381143931293390835, guid: e6df7b7a01007de4ab9262c845ea7331,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.0005
-      objectReference: {fileID: 0}
     - target: {fileID: 6381143931293390835, guid: e6df7b7a01007de4ab9262c845ea7331,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4266,7 +4246,7 @@ PrefabInstance:
     - target: {fileID: 6381143931293390835, guid: e6df7b7a01007de4ab9262c845ea7331,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0006341624
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381143931293390835, guid: e6df7b7a01007de4ab9262c845ea7331,
         type: 3}
@@ -4307,16 +4287,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8585260757975923226, guid: e6df7b7a01007de4ab9262c845ea7331,
-        type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8585260757975923226, guid: e6df7b7a01007de4ab9262c845ea7331,
-        type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4534,7 +4504,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115439818}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -4702,6 +4672,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3168716623670833408, guid: e6df7b7a01007de4ab9262c845ea7331,
+        type: 3}
+      propertyPath: plantsData
+      value: 
+      objectReference: {fileID: 11400000, guid: 93d5f59b3b4e4a3498cb7623766d5cf9,
+        type: 2}
     - target: {fileID: 6381143931293390835, guid: e6df7b7a01007de4ab9262c845ea7331,
         type: 3}
       propertyPath: m_LocalScale.x
