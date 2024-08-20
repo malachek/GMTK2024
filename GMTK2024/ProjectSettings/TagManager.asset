@@ -19,7 +19,7 @@ TagManager:
   - Navmesh
   - Character
   - Ground
-  - 
+  - SeedPackLayer
   - 
   - PlantCollider
   - NeighborCollider
