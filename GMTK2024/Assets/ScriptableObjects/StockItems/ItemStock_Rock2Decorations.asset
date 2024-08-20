@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c52096482286c64c9f89ee0632c54d1, type: 3}
-  m_Name: ItemStock_MossesSeeds
+  m_Name: ItemStock_Rock2Decorations
   m_EditorClassIdentifier: 
-  itemSO: {fileID: 11400000, guid: 4e51e8aa1011d594390144f0ab810e13, type: 2}
+  itemSO: {fileID: 11400000, guid: 8183e8edd11d2294ab7bd246b6acd66c, type: 2}
   stockLimit: 63
   inStock: 63
   restockTime: 10

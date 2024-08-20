@@ -70,6 +70,9 @@ public class ShopManager : MonoBehaviour
                 case StoreItemSO.StoreItemType.Fertilizer:
                     playerInventory.AddItemToInventory(itemSO.baseDataSO, playerInventory.FertilizerInventory);
                     break;
+                case StoreItemSO.StoreItemType.Decoration:
+                    playerInventory.AddItemToInventory(itemSO.baseDataSO, playerInventory.DecorationsInventory);
+                    break;
             } 
             isTransactionSuccessful = true;
         }

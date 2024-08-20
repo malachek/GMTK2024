@@ -5,6 +5,6 @@ using UnityEngine;
 
 [System.Serializable]
 public struct DialogueValue{
-    public int value;
+    public int Value;
     public string text;
 }

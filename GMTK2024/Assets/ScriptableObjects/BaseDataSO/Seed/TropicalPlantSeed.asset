@@ -12,14 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb3f07b7f1a55449bb891993899e0d2, type: 3}
   m_Name: TropicalPlantSeed
   m_EditorClassIdentifier: 
-  objectsName: Tropical Plant Seed
+  objectsName: Tropical Plants
   objectsDescription: 
-  Sprite: {fileID: 21300000, guid: 1b0da35b0acc41649b935ec17b58d5e8, type: 3}
-  stackMax: 0
+  Sprite: {fileID: 0}
+  stackMax: 63
   eItemType: 6
-  DesiredSunlight: 0
-  DesiredWaterLevel: 0
-  DesiredSoilBracket: 0
+  DesiredSunlight: 1
+  DesiredWaterLevel: 5
+  DesiredSoilBracket: 3
   Income: 18
-  GoodNeighborLabels: []
-  BadNeighborLabels: []
+  GoodNeighborLabels:
+  - Ferns
+  - Orchids
+  BadNeighborLabels:
+  - Succulents
+  - Air Plants

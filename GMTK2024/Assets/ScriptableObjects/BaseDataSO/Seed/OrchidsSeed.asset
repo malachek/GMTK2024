@@ -12,14 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb3f07b7f1a55449bb891993899e0d2, type: 3}
   m_Name: OrchidsSeed
   m_EditorClassIdentifier: 
-  objectsName: Orchids Seed
+  objectsName: Orchids
   objectsDescription: 
-  Sprite: {fileID: 21300000, guid: 65d32d932e5befd408ade65b4ac59617, type: 3}
-  stackMax: 0
+  Sprite: {fileID: 0}
+  stackMax: 63
   eItemType: 7
-  DesiredSunlight: 0
-  DesiredWaterLevel: 0
-  DesiredSoilBracket: 0
+  DesiredSunlight: 1
+  DesiredWaterLevel: 3
+  DesiredSoilBracket: 3
   Income: 22
-  GoodNeighborLabels: []
-  BadNeighborLabels: []
+  GoodNeighborLabels:
+  - Begonias
+  - Tropical Plants
+  BadNeighborLabels:
+  - Succulents
+  - Air Plants

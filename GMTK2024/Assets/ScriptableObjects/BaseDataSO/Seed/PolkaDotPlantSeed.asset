@@ -12,14 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb3f07b7f1a55449bb891993899e0d2, type: 3}
   m_Name: PolkaDotPlantSeed
   m_EditorClassIdentifier: 
-  objectsName: PolkaDotPlantSeed
+  objectsName: Polka Dot
   objectsDescription: 
-  Sprite: {fileID: 21300000, guid: 5eee82e90a7e40a458514f98cd9cb8e0, type: 3}
-  stackMax: 0
+  Sprite: {fileID: 0}
+  stackMax: 63
   eItemType: 4
-  DesiredSunlight: 0
-  DesiredWaterLevel: 0
-  DesiredSoilBracket: 0
+  DesiredSunlight: 1
+  DesiredWaterLevel: 4
+  DesiredSoilBracket: 2
   Income: 12
-  GoodNeighborLabels: []
-  BadNeighborLabels: []
+  GoodNeighborLabels:
+  - Succulents
+  - Peperomia
+  BadNeighborLabels:
+  - Begonias
+  - Air Plants

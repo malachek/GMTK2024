@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e5b02745f163745a665be15fec6bd3, type: 3}
+  m_Name: Rock3DecorationItem
+  m_EditorClassIdentifier: 
+  baseDataSO: {fileID: 11400000, guid: 55f708f422c61e24da6239531d5c04cf, type: 2}
+  basePrice: 50
+  bundleNum: 1
+  storeItemType: 2
+  priceMultiplier: 0
+  priceMultiplierModifier: 0
+  supplyLimiter: 0

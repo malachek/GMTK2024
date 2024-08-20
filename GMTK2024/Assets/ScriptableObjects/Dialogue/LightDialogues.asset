@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: LightDialogues
   m_EditorClassIdentifier: 
   dialogueValuesList:
-  - value: 0
+  - Value: 0
     text: It's a bit too hot in here right now, I think the sunlight is hitting us
       too much right now
-  - value: 0
+  - Value: 0
     text: I don't think the plants are getting enough sunlight right now
-  - value: 0
+  - Value: 2
     text: The sunlight is hitting us just perfectly, its great
   dialogueCategory: 0
