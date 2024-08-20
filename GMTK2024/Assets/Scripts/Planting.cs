@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -7,13 +8,17 @@ using UnityEngine.UIElements;
 
 public class Planting : MonoBehaviour
 {
+    //[SerializeField] private CinemachineVirtualCamera mainCamera;
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private LayerMask layerMask; // Layer mask for the ground or surfaces where the object can be placed
-    [SerializeField] private Material previewMaterial; // Material to use for the preview (semi-transparent)
+    [SerializeField] private LayerMask groundMask; 
+    [SerializeField] private LayerMask packMask;
+    [SerializeField] private Material previewMaterial; 
 
     private PrefabSelector plantSelector;
     private GameObject previewInstance;
     private GameObject lastSelectedPrefab;
+
+    [SerializeField] GameObject SoilTop;
 
     public delegate void PlantSeed();
     public static event PlantSeed OnPlantSeed;
@@ -25,8 +30,10 @@ public class Planting : MonoBehaviour
 
     void Update()
     {
+        HandlePrefabSelection();
+
         // Check selected prefab
-        GameObject selectedPrefab = plantSelector.GetSelectedPrefab();
+        GameObject selectedPrefab = plantSelector.GetSelectedSeedPrefab();
         if (selectedPrefab == null)
         {
             DestroyPreview(); // Destroy the preview if no prefab is selected
@@ -46,20 +53,44 @@ public class Planting : MonoBehaviour
         //instantiate
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            PlacePrefab();
+            if (!IsClickingOnSelectableObject())
+            {
+                PlacePrefab();
+            }
+        }
+    }
+
+    void HandlePrefabSelection()
+    {
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        {
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, float.MaxValue, packMask))
+            {
+                SeedPackSelection selector = hit.collider.GetComponent<SeedPackSelection>();
+                if (selector != null)
+                {
+                    plantSelector.SelectPrefab(selector.seedPackIndex);
+                    lastSelectedPrefab = null; 
+                }
+            }
         }
     }
 
     void CreatePreview(GameObject prefab)
     {
         previewInstance = Instantiate(prefab);
+        previewInstance.layer = 0;
         SetPreviewMaterial(previewInstance, previewMaterial);
     }
 
     void UpdatePreviewPosition()
     {
+        //Ray ray = mainCamera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, layerMask))
+        if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, groundMask))
         {
             previewInstance.transform.position = hit.point;
         }
@@ -69,10 +100,20 @@ public class Planting : MonoBehaviour
     {
         if (previewInstance != null)
         {
+            plantSelector.PlantMusicQueue();
             // Instantiate the actual prefab at the preview's position
-            Instantiate(plantSelector.GetSelectedPrefab(), previewInstance.transform.position, Quaternion.identity);
+            var justPlanted = Instantiate(plantSelector.GetSelectedPlantPrefab(), previewInstance.transform.position, Quaternion.identity);
+            SetParent(justPlanted.transform, SoilTop.transform);
+            plantSelector.DeselectPrefab();
             OnPlantSeed?.Invoke();
         }
+    }
+
+    void SetParent(Transform child, Transform parent)
+    {
+        child.SetParent(parent);
+        //child.localPosition = Vector3.zero;
+        //child.localRotation = Quaternion.identity;
     }
 
     void SetPreviewMaterial(GameObject obj, Material material)
@@ -91,5 +132,15 @@ public class Planting : MonoBehaviour
             Destroy(previewInstance);
             previewInstance = null;
         }
+    }
+
+    bool IsClickingOnSelectableObject()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, packMask))
+        {
+            return hit.collider.GetComponent<SeedPackSelection>() != null;
+        }
+        return false;
     }
 }
