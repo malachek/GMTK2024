@@ -12,14 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb3f07b7f1a55449bb891993899e0d2, type: 3}
   m_Name: PeperomiaSeed
   m_EditorClassIdentifier: 
-  objectsName: Peperomia Seed
+  objectsName: Peperomia
   objectsDescription: 
   Sprite: {fileID: 0}
-  stackMax: 0
+  stackMax: 63
   eItemType: 8
-  DesiredSunlight: 0
-  DesiredWaterLevel: 0
-  DesiredSoilBracket: 0
+  DesiredSunlight: 1
+  DesiredWaterLevel: 3
+  DesiredSoilBracket: 3
   Income: 25
-  GoodNeighborLabels: []
-  BadNeighborLabels: []
+  GoodNeighborLabels:
+  - Polka Dot
+  - Tropical Plants
+  BadNeighborLabels:
+  - Begonias
+  - Ferns

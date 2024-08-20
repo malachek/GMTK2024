@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c52096482286c64c9f89ee0632c54d1, type: 3}
-  m_Name: ItemStock_MossesSeeds
+  m_Name: ItemStock_BegoniasSeeds
   m_EditorClassIdentifier: 
   itemSO: {fileID: 11400000, guid: 4e51e8aa1011d594390144f0ab810e13, type: 2}
   stockLimit: 63

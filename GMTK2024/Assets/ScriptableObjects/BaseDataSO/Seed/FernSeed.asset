@@ -12,14 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb3f07b7f1a55449bb891993899e0d2, type: 3}
   m_Name: FernSeed
   m_EditorClassIdentifier: 
-  objectsName: Fern Seed
+  objectsName: Ferns
   objectsDescription: 
   Sprite: {fileID: 21300000, guid: eb7a1e35b44d84d42987140a3db10426, type: 3}
   stackMax: 63
   eItemType: 1
-  DesiredSunlight: 2
+  DesiredSunlight: 0
   DesiredWaterLevel: 6
   DesiredSoilBracket: 0
   Income: 5
-  GoodNeighborLabels: []
-  BadNeighborLabels: []
+  GoodNeighborLabels:
+  - Begonias
+  - Tropical Plants
+  BadNeighborLabels:
+  - Succulents
+  - Air Plants

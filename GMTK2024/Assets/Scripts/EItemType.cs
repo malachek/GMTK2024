@@ -6,7 +6,7 @@ public enum EItemType{
 
     RegularSoil,
     FernSeed,
-    MossesSeed,
+    BegoniasSeed,
     SucculentsSeed,
     PolkaDotPlantSeed,
     AirPlantSeed,

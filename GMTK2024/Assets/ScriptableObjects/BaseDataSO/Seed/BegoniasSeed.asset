@@ -10,16 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfb3f07b7f1a55449bb891993899e0d2, type: 3}
-  m_Name: MossesSeed
+  m_Name: BegoniasSeed
   m_EditorClassIdentifier: 
-  objectsName: Mosses Plant
+  objectsName: Begonias
   objectsDescription: 
   Sprite: {fileID: 0}
-  stackMax: 0
+  stackMax: 63
   eItemType: 2
   DesiredSunlight: 0
-  DesiredWaterLevel: 0
-  DesiredSoilBracket: 0
+  DesiredWaterLevel: 5
+  DesiredSoilBracket: 1
   Income: 7
-  GoodNeighborLabels: []
-  BadNeighborLabels: []
+  GoodNeighborLabels:
+  - Ferns
+  - Orchids
+  BadNeighborLabels:
+  - Succulents
+  - Polka Dot
