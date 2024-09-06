@@ -8,9 +8,6 @@ public class InteractGodMode : MonoBehaviour{
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Camera mainCamera;
 
-    void Start(){
-    }
-
     void Update(){
 
         if (Input.GetMouseButtonDown(0)){
@@ -46,5 +43,4 @@ public class InteractGodMode : MonoBehaviour{
         soil.HealSoil(fertilizerSO.healthBooster * 100);
         baseDataSO = null;
     }
-
 }

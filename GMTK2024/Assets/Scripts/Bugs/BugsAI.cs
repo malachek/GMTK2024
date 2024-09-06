@@ -103,4 +103,9 @@ public class BugsAI : MonoBehaviour, IInteractable{
         yield return new WaitForSeconds(dialogueTime);
         interactedOnce = false;
     }
+
+    public void NotInteracting()
+    {
+        throw new System.NotImplementedException();
+    }
 }

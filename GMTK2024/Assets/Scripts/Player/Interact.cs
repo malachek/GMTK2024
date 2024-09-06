@@ -10,11 +10,9 @@ public class Interact : MonoBehaviour{
     [SerializeField] private float range;
 
     private Camera mainCamera;
-
-    private StarterAssetsInputs playerInput;
+    private IInteractable interactable;
 
     void Start(){
-        playerInput = GetComponent<StarterAssetsInputs>();
         mainCamera = Camera.main;
     }
 
@@ -28,10 +26,18 @@ public class Interact : MonoBehaviour{
         RaycastHit hit;
         if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.TransformDirection(Vector3.forward), out hit, range)){
             GameObject target = hit.collider.gameObject;
-            target.GetComponent<IInteractable>()?.OnSelected();
-            if(Input.GetMouseButtonDown(0)){
-                target.GetComponent<IInteractable>()?.Interact();
+            if (target.GetComponent<IInteractable>() != null && interactable == null){
+                interactable = target.GetComponent<IInteractable>();
+                Debug.Log("Selected");
+                interactable.OnSelected();
             }
+            if(Input.GetMouseButtonDown(0) && interactable != null){
+                interactable.Interact();
+                Debug.Log("interacted");
+            }
+        }else{
+            interactable?.NotInteracting();
+            interactable = null;
         }     
     }
 }

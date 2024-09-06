@@ -7,4 +7,6 @@ public interface IInteractable{
     public void Interact();
 
     public void OnSelected();
+
+    public void NotInteracting();
 }

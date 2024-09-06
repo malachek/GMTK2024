@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5912272631909240324}
   - component: {fileID: 4592114418989845869}
   - component: {fileID: 5875425898750088802}
-  m_Layer: 10
+  m_Layer: 31
   m_Name: Fertilizer_InventorySlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class ShopManagerUI : MonoBehaviour{
     [SerializeField] private Button exitButton;
-    [SerializeField] private Button openShopButton;
     [SerializeField] private Button goBackButton;
     [SerializeField] private Button seedsButton;
     [SerializeField] private Button fertilizerButton;
@@ -20,6 +19,7 @@ public class ShopManagerUI : MonoBehaviour{
     [SerializeField] private GameObject decorationsContainer;
     [SerializeField] private GameObject mainMenuShop;
     [SerializeField] private GameObject shopUI;
+    [SerializeField] private AntSeller antSeller;
 
     void Start(){
         moneyText.text = PlayerInventory.Instance.Money.ToString();
@@ -29,7 +29,7 @@ public class ShopManagerUI : MonoBehaviour{
         seedsButton.onClick.AddListener(OnSeedsSection);
         fertilizerButton.onClick.AddListener(OnFertilizersSection);
         decorationsButton.onClick.AddListener(OnDecorationsSection);
-        openShopButton.onClick.AddListener(Show);
+        antSeller.Interacted += Show;
 
         ShopManager.Instance.OnSuccessfulPurchase += ShopManager_OnSuccessfulPurchase;
 
@@ -40,9 +40,15 @@ public class ShopManagerUI : MonoBehaviour{
         shopUI.SetActive(false);
     }
 
+    private void Show(object sender, EventArgs e)
+    {
+        Show();
+    }
+
     private void Show()
     {
         shopUI.SetActive(true);
+        antSeller.enabled = false;
     }
 
     private void ShopManager_OnSuccessfulPurchase(object sender, EventArgs e)
@@ -83,5 +89,6 @@ public class ShopManagerUI : MonoBehaviour{
         decorationsContainer.SetActive(false);
         mainMenuShop.SetActive(true);
         shopUI.SetActive(false);
+        antSeller.enabled = true;
     }
 }
