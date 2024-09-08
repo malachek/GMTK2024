@@ -10,6 +10,8 @@ TagManager:
   - Sun
   - SmallCameraLocation
   - GodCameraLocation
+  - Plant
+  - Ground
   layers:
   - Default
   - TransparentFX

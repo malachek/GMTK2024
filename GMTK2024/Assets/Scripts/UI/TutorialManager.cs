@@ -11,6 +11,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject ThePaper;
     [SerializeField] TextMeshProUGUI Text;
 
+    [SerializeField] Material PaperMaterial;
+
     bool IsTutorialActive;
 
     bool IsPlantingQueued = false;
@@ -25,6 +27,7 @@ public class TutorialManager : MonoBehaviour
         TimeManager.OnNewDay += Shrinking;
         TimeManager.OnNewDay += Shop;
         GrownState.OnReachedFullGrown += FullyGrown;
+        SetOpacity(1f);
     }
 
     private void FixedUpdate()
@@ -44,10 +47,16 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    public void SetOpacity(float alpha)
+    {
+        PaperMaterial.color = Color.Lerp(Color.white, Color.clear, alpha);
+    }
+
     void StartTutorial(string text)
     {
         Text.text = text;
         ThePaper.SetActive(true);
+        SetOpacity(0);
         IsTutorialActive=true;
     }
 

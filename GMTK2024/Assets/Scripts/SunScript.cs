@@ -5,6 +5,7 @@ using UnityEngine;
 public class SunScript : MonoBehaviour
 {
     public TimeManager timeGod;
+
     // Start is called before the first frame update
     void Start()
     {

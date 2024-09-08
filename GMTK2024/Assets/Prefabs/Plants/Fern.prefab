@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2915013290862045942}
   - component: {fileID: 2337628802524125261}
   - component: {fileID: -6214294174299914825}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fern
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2555078711368805599}
   - component: {fileID: 934550529726293863}
   - component: {fileID: 6103779794511322943}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

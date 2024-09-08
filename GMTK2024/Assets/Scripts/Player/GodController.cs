@@ -17,6 +17,9 @@ public class GodController : MonoBehaviour
     [Tooltip("Default FOV")]
     [SerializeField] float OriginalGodCameraFOV;
 
+    [Tooltip("Zoomed Transform Offset")]
+    [SerializeField] Vector3 ZoomedOffset;
+
 
     [Tooltip("How far in degrees can you move the camera up")]
     public float TopClamp = 70.0f;
@@ -38,6 +41,9 @@ public class GodController : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera myCamera;
 
     [SerializeField] Transform CameraPivot;
+
+
+    [SerializeField] TutorialManager tutorialManager;
 
 
 
@@ -98,6 +104,13 @@ public class GodController : MonoBehaviour
             {
                 myCamera.m_Lens.FieldOfView = newFOV;
             }
+
+            float lerpValue = -(myCamera.m_Lens.FieldOfView - 40) / 20;
+            Vector3 newTargetPos = Vector3.Lerp(Vector3.zero, ZoomedOffset, lerpValue);
+            Debug.Log(newTargetPos);
+            CinemachineCameraTarget.transform.localPosition = newTargetPos; //Vector3.Lerp(Vector3.zero, ZoomedOffset, -(myCamera.m_Lens.FieldOfView - 40)/20;
+            CinemachineCameraTarget.transform.localEulerAngles = new Vector3(Mathf.Lerp(0, 2.55f, lerpValue), 0f, 0f);
+            tutorialManager.SetOpacity(lerpValue);
         }
     }
 
@@ -110,6 +123,7 @@ public class GodController : MonoBehaviour
     {
         Debug.Log("Resetting Camera Position");
         myCamera.m_Lens.FieldOfView = OriginalGodCameraFOV;
+        CinemachineCameraTarget.transform.localPosition = Vector3.Lerp(Vector3.zero, ZoomedOffset, -(myCamera.m_Lens.FieldOfView - 40) / 20);
     }
 
 
