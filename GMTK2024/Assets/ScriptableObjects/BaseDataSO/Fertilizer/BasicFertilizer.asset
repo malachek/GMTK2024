@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f01fcf31bf8a345a1b0c48296dcfe2, type: 3}
   m_Name: BasicFertilizer
   m_EditorClassIdentifier: 
-  objectsName: 
+  objectsName: Basic Fertilizer
   objectsDescription: 
   Sprite: {fileID: 0}
   stackMax: 63

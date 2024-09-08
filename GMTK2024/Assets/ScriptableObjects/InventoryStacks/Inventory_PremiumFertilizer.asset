@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stackType: 12
   baseDataSOArray:
-  - {fileID: 11400000, guid: 487250c88a5fca24a8034faddf97f4be, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -78,4 +77,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  itemsInStack: 1
+  - {fileID: 0}
+  itemsInStack: 0

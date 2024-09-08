@@ -342,7 +342,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitButton: {fileID: 5990149654122815944}
-  openShopButton: {fileID: 0}
   goBackButton: {fileID: 3170567988948779205}
   seedsButton: {fileID: 2443864419883829935}
   fertilizerButton: {fileID: 1679183554577547992}
@@ -353,6 +352,7 @@ MonoBehaviour:
   decorationsContainer: {fileID: 6196363909739999321}
   mainMenuShop: {fileID: 7135066809226552922}
   shopUI: {fileID: 6233508517680309662}
+  antSeller: {fileID: 0}
 --- !u!1 &1053947811374731446
 GameObject:
   m_ObjectHideFlags: 0
@@ -2906,6 +2906,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4792931644243092396}
+  - component: {fileID: 7287374066132908278}
+  - component: {fileID: 2581689771793098403}
   m_Layer: 5
   m_Name: ShopUI
   m_TagString: Untagged
@@ -2941,6 +2943,44 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7287374066132908278
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6233508517680309662}
+  m_CullTransparentMesh: 1
+--- !u!114 &2581689771793098403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6233508517680309662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6260016831247698463
 GameObject:
   m_ObjectHideFlags: 0
@@ -4310,10 +4350,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4792931644243092396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1953, y: 1085}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6505403438967090836
 CanvasRenderer:
@@ -4343,7 +4383,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 02a0b84775214ec4086bbff54d741a1a, type: 3}
+  m_Sprite: {fileID: -1056048713, guid: 02a0b84775214ec4086bbff54d741a1a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

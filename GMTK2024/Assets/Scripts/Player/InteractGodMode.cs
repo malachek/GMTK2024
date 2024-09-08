@@ -15,10 +15,11 @@ public class InteractGodMode : MonoBehaviour{
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
             if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask)){
-
+                Debug.Log(baseDataSO);
                 if(baseDataSO != null){
                     if (hit.collider.gameObject.GetComponent<Soil>() != null){
                         InsertFertilizer(hit.collider.gameObject.GetComponent<Soil>());
+                        Debug.Log("Inserted");
                     }
                 }
                 else{

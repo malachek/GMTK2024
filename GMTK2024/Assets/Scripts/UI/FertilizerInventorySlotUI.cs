@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,17 +14,28 @@ public class FertilizerInventorySlotUI : MonoBehaviour{
     [SerializeField] private TextMeshProUGUI countText;
     [SerializeField] private Animator animator;
     [SerializeField] private InventoryStackSO inventoryStackSO;
+    [SerializeField] private BaseDataSO baseDataSO;
 
     private const string SELECTED = "PurchaseStatus";
 
     private void Start(){
+        ShopManager.Instance.OnSuccessfulPurchase +=  ShopManager_OnSuccessfulPurchase;
         OnIdle();
+    }
+
+    private void ShopManager_OnSuccessfulPurchase(object sender, EventArgs e)
+    {
+        countText.text = inventoryStackSO.itemsInStack.ToString();
     }
 
     private void OnIdle(){
         background.color = colorIdle;
-        nameText.text = inventoryStackSO.baseDataSOArray[0].objectsName;
-        countText.text = inventoryStackSO.itemsInStack.ToString();
+        if(inventoryStackSO.baseDataSOArray[0] == null){
+            countText.text = "0";
+        }else{
+            countText.text = inventoryStackSO.itemsInStack.ToString();
+        }
+        nameText.text = baseDataSO.objectsName.Substring(0, baseDataSO.objectsName.IndexOf(" ")+1);
     }
 
     public void OnSelected(){
@@ -35,6 +47,7 @@ public class FertilizerInventorySlotUI : MonoBehaviour{
     }
 
     IEnumerator timer(float time){
+        
         yield return new WaitForSeconds(time);
         OnIdle();
     }

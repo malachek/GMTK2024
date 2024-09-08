@@ -8,8 +8,10 @@ public class AIDialogueUI : MonoBehaviour{
     [SerializeField] private GameObject dialogue;
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private float timeToRead;
+    [SerializeField] private Animator animator;
 
     void Start(){
+        dialogue.SetActive(false);
         Hide();
     }
 
@@ -20,18 +22,14 @@ public class AIDialogueUI : MonoBehaviour{
     public void TalkToPlayer(string newText){
         Show();
         UpdateVisuals(newText);
-        StartCoroutine(Timer());
     }
 
     void Show(){
         dialogue.SetActive(true);
+        animator.SetBool("State", true);
     }
 
     public void Hide(){
-        dialogue.SetActive(false);
-    }
-
-    IEnumerator Timer(){
-        yield return new WaitForSeconds(timeToRead);
+        animator.SetBool("State", false);
     }
 }

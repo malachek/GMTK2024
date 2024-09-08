@@ -41,7 +41,7 @@ public class BugsAI : MonoBehaviour, IInteractable{
                     interactedOnce = false;
                 }
 
-                if((Mathf.Abs((currentTargetPoint - transform.position).magnitude) - paddingDistance) <= 0){
+                if((Mathf.Abs((currentTargetPoint - transform.position).magnitude) - paddingDistance) <= 1){
                     onTargetPoint = true;
                 }else{
                     onTargetPoint = false;
@@ -106,6 +106,6 @@ public class BugsAI : MonoBehaviour, IInteractable{
 
     public void NotInteracting()
     {
-        throw new System.NotImplementedException();
+        StartCoroutine(ResumeWalk());
     }
 }

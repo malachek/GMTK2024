@@ -23,6 +23,7 @@ public class InventorySlot : MonoBehaviour {
         switch (inventoryType){
             case InventoryType.Seed:
                 inventoryStackSO = PlayerInventory.Instance.GetInventoryStackSO(eItemType, PlayerInventory.Instance.SeedsInventory);
+                inventorySlotUI.SetInventoryStackSO(inventoryStackSO);
                 break;
             case InventoryType.Fertilizer:
                 inventoryStackSO = PlayerInventory.Instance.GetInventoryStackSO(eItemType, PlayerInventory.Instance.FertilizerInventory);
@@ -49,6 +50,8 @@ public class InventorySlot : MonoBehaviour {
                 case InventoryType.Fertilizer:
                     interactGodMode.SetBaseDataSO(baseDataSO);
                     fertilizerInventorySlotUI.OnSelected();
+                    inventoryStackSO.baseDataSOArray[inventoryStackSO.itemsInStack-1] = null;
+                    inventoryStackSO.itemsInStack--;
                     break;
                 case InventoryType.Decoration:
                     //For later
