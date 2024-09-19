@@ -5,7 +5,7 @@ using UnityEngine;
 public class DialogueSelector : MonoBehaviour{
 
     [SerializeField] private List<DialogueListSO> dialogueListSOList;
-    [SerializeField] private PlantBase plantBase;
+    private PlantBase plantBase;
     private List<DialogueListSO> tempList = new List<DialogueListSO>();
 
     void Start(){

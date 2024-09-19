@@ -11,7 +11,7 @@ public class BugsAI : MonoBehaviour, IInteractable{
         Talking,
     }
 
-    [SerializeField] private PlantBase plantBase;
+    private PlantBase plantBase;
     private DialogueSelector dialogueSelector;
     private BugState bugState;
     private NavMeshAgent agent;
@@ -63,7 +63,7 @@ public class BugsAI : MonoBehaviour, IInteractable{
     }
 
     public void SetPlantBase(PlantBase plantBase){
-        //this.plantBase = plantBases;
+        this.plantBase = plantBase;
     }
 
     private Vector3 SetNewPoint(){
@@ -80,6 +80,7 @@ public class BugsAI : MonoBehaviour, IInteractable{
             StartCoroutine(CoolDownDialogue());
             StopCoroutine(ResumeWalk());
             bugState = BugState.Talking;
+            dialogueSelector.SetPlantBase(plantBase);
             string dialogue = dialogueSelector.SelectADialogue();
             dialogueUI.TalkToPlayer(dialogue);
             StartCoroutine(ResumeWalk());

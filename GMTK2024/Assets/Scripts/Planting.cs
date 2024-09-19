@@ -74,6 +74,7 @@ public class Planting : MonoBehaviour
                 {
                     plantSelector.SelectPrefab(selector.seedPackIndex);
                     lastSelectedPrefab = null; 
+                    selector.DestroyPack();
                 }
             }
         }
