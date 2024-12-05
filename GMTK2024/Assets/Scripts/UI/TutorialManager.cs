@@ -27,6 +27,7 @@ public class TutorialManager : MonoBehaviour
         TimeManager.OnNewDay += Shrinking;
         TimeManager.OnNewDay += Shop;
         GrownState.OnReachedFullGrown += FullyGrown;
+        SoilHealthGuide.OnOpenQuickTutorial += QuickTutorial;
         SetOpacity(1f);
     }
 
@@ -58,6 +59,11 @@ public class TutorialManager : MonoBehaviour
         ThePaper.SetActive(true);
         SetOpacity(0);
         IsTutorialActive=true;
+    }
+
+    void QuickTutorial()
+    {
+        StartTutorial("Control 4 conditions to ensure plant health!\r\nSUNLIGHT: Rotate jar.\r\nWATER: Click spray-bottle, and then on plants\r\nSOIL HEALTH: Buy fertilizer from Mr. Ant when soil quality diminishes.\r\nNEIGHBORS: Plants have preferences, and need space!\r\n\r\nDo these daily, and click the SUN after!\r\n\r\nMake sure to talk with your bugs! - [F]");
     }
 
     void Welcome(int day)

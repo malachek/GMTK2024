@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsName: Air Plants
   objectsDescription: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 3604b38e692a52342af1781d1d67dcf2, type: 3}
   stackMax: 64
   eItemType: 5
   DesiredSunlight: 2

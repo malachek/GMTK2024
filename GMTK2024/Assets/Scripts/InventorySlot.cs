@@ -20,6 +20,7 @@ public class InventorySlot : MonoBehaviour {
     }
 
     private void Start(){
+        Debug.Log("Starting from INventorySlot");
         switch (inventoryType){
             case InventoryType.Seed:
                 inventoryStackSO = PlayerInventory.Instance.GetInventoryStackSO(eItemType, PlayerInventory.Instance.SeedsInventory);

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+//using static UnityEditor.Progress;
 
 public class ShopManager : MonoBehaviour
 {
@@ -12,10 +13,17 @@ public class ShopManager : MonoBehaviour
     public event EventHandler OnFailedPurchase;
     public event EventHandler OnNotOnStock;
 
+    [SerializeField] BaseDataSO FernBaseDataSO;
+
     public static ShopManager Instance {get; private set;}
 
     private void Awake(){
         Instance = this;
+
+        GameObject.FindObjectOfType<PlayerInventory>().AddItemToInventory(FernBaseDataSO, FindObjectOfType<PlayerInventory>().SeedsInventory);
+        GameObject.FindObjectOfType<PlayerInventory>().AddItemToInventory(FernBaseDataSO, FindObjectOfType<PlayerInventory>().SeedsInventory);
+        GameObject.FindObjectOfType<PlayerInventory>().AddItemToInventory(FernBaseDataSO, FindObjectOfType<PlayerInventory>().SeedsInventory);
+
     }
 
     // Should also have a player parameter or at least inventory

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlantBase : MonoBehaviour
 {
+    public bool hackForThePic;
+
     public DecorationSprite plantSprite;
 
     public int my_Points { get; private set; }
@@ -32,7 +34,7 @@ public class PlantBase : MonoBehaviour
 
     void Awake()
     {
-        my_Points = 0;
+        my_Points = hackForThePic?10:0;
         ParseData();
 
         plantSprite.ScaleTo(.1f);

@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Cinemachine.CinemachineTriggerAction.ActionSettings;
 
 public class SoilHealthGuide : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public delegate void OpenQuickTutorial();
+    public static event OpenQuickTutorial OnOpenQuickTutorial;
+
+    public void OnInteract(InteractGodMode interactGodMode)
     {
-        
+        Debug.Log("paper");
+        OnOpenQuickTutorial?.Invoke();
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
