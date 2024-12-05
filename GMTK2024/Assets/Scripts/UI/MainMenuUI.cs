@@ -11,7 +11,7 @@ public class MainMenuUI : MonoBehaviour{
     [SerializeField] private Button startButton;
     [SerializeField] private Button exitButton;
 
-    private const string SCENE_NAME = "Terrarium";
+    private const string SCENE_NAME = "Terrarium - Brandon";
 
     void Start(){
         startButton.onClick.AddListener(OnStartGame);
